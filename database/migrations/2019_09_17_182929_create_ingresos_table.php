@@ -18,16 +18,13 @@ class CreateIngresosTable extends Migration
             $table->bigInteger('paciente_id')->unsigned();
             $table->bigInteger('usuario_id')->unsigned();
             $table->bigInteger('detalle_id')->unsigned();
-            $table->date('fecha');
-            $table->string('importe');
+            $table->string('fecha');
+            $table->string('importe',4);
             $table->string('descripcion',100);
-           
             $table->timestamps();
-            
             $table->foreign('paciente_id')->references('id')->on('paciente')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('diagnostico_id')->references('id')->on('diagnostico')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade')->onUpdate('cascade');
         $table->foreign('detalle_id')->references('id')->on('detalle_ingreso')->onDelete('cascade')->onUpdate('cascade');
-        
         });
     }
 

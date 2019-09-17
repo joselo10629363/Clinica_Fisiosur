@@ -17,8 +17,8 @@ class CreateEvolucionTable extends Migration
             $table->bigIncrements('id');
              $table->bigInteger('paciente_id')->unsigned();
             $table->bigInteger('diagnostico_id')->unsigned();
-            $table->date('fecha');
-            $table->bigInteger('secion');
+            $table->string('fecha');
+            $table->string('sesion',2);
 
            $table->string('observacion',255);
             $table->timestamps();
@@ -26,7 +26,7 @@ class CreateEvolucionTable extends Migration
             $table->foreign('paciente_id')->references('id')->on('paciente')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('diagnostico_id')->references('id')->on('diagnostico')->onDelete('cascade')->onUpdate('cascade');
             
-            $table->timestamps();
+            
         });
     }
 

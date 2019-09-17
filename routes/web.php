@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::resource ('rol','RolController');
 Route::resource ('filiacion','AfiliacionController');
 Route::resource ('paciente','PacienteController');
+Route::resource ('tratamiento','TratamientoController');
 
 
 
