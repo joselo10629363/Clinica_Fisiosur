@@ -15,7 +15,13 @@ class CreateDiagnosticoTable extends Migration
     {
         Schema::create('diagnostico', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('paciente_id')->unsigned();
+            $table->bigInteger('medico_id')->unsigned();
+            $table->string('observacion',255);
             $table->timestamps();
+            $table->foreign('paciente_id')->references('id')->on('paciente')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('medico_id')->references('id')->on('medico')->onDelete('cascade')->onUpdate('cascade');
+           
         });
     }
 

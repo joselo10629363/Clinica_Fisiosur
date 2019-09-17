@@ -15,6 +15,9 @@ class CreateDetalleIngresoTable extends Migration
     {
         Schema::create('detalle_ingreso', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->straing('concepto');
+            $table->straing('monto');
+             $table->straing('saldo');
             $table->timestamps();
         });
     }

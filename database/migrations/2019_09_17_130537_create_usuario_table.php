@@ -15,7 +15,14 @@ class CreateUsuarioTable extends Migration
     {
         Schema::create('usuario', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('persona_id')->unsigned();
+            $table->bigInteger('rol_id')->unsigned();
+            $table->string('correo',255);
+            $table->string('clave',255);
             $table->timestamps();
+            $table->foreign('persona_id')->references('id')->on('persona')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('rol_id')->references('id')->on('rol')->onDelete('cascade')->onUpdate('cascade');
+           
         });
     }
 
@@ -23,8 +30,8 @@ class CreateUsuarioTable extends Migration
      * Reverse the migrations.
      *
      * @return void
-     */
     public function down()
+     */
     {
         Schema::dropIfExists('usuario');
     }

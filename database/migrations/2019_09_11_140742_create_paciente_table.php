@@ -20,6 +20,7 @@ class CreatePacienteTable extends Migration
             $table->string('ocupacion',30);
            $table->string('descripcion',255);
             $table->timestamps();
+            
             $table->foreign('persona_id')->references('id')->on('persona')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('afiliacion_id')->references('id')->on('afiliacion')->onDelete('cascade')->onUpdate('cascade');
             
