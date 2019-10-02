@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Medico;
 
 class MedicoController extends Controller
 {
@@ -34,7 +35,14 @@ class MedicoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $medico=new Medico;
+        $medico->nombre= $request->nombre;
+        $medico->apellido=$request->apellido;
+        $medico->matricula=$request->matricula;
+
+        $medico->save();
+
+        return back()->with('info','Nueva Medico Guardado');
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Paciente;
 use App\Persona;
 use App\Afiliacion;
+
 class PacienteController extends Controller
 {
     /**
@@ -68,8 +69,13 @@ class PacienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    { 
+          $pacientes=Paciente::find($id);
+
+          
+               
+return view('paciente.mostrar', compact('pacientes'));
+
     }
 
     /**
@@ -80,8 +86,18 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+             $paciente=Paciente::find($id);
+             $pacientes=Paciente::all();
+
+             if ($paciente) 
+                return view('paciente.editar', compact('paciente','pacientes'));
+            else
+                return view('paciente.index');
+             }
+
+
+        
+
 
     /**
      * Update the specified resource in storage.

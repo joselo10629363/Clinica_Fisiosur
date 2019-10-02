@@ -16,7 +16,7 @@ class RolController extends Controller
     {
 
         $rols=Rol::orderBy('id','DESC')->paginate(5);
-       return view('usuario.index',compact('rols') );   }
+       return view('rol.index',compact('rols') );   }
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +25,7 @@ class RolController extends Controller
      */
     public function create()
     {
-        return view('usuario.crear');
+       
 
 
     }
@@ -66,9 +66,10 @@ class RolController extends Controller
      */
     public function edit($id)
     {
-        $rols=Rol::find($id);
+      $rols=Rol::find($id);
 
-        return view('usuario.editar', compact('rols'));
+        return view('rol.editar')->with( ['role' => $rols] );
+      
 
     }
 

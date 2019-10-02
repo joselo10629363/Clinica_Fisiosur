@@ -15,7 +15,7 @@
        <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            @include('usuario/fragment/info')
+            @include('rol/fragment/info')
             <div class="row">
               <div class="col-lg-6">
                
@@ -98,27 +98,37 @@
             </div>
 
 
-            @include('usuario/fragment/info')
+            @include('rol/fragment/info')
               <table class="table table-hover table-striped">
                 <thead>
-                  <tr>
+                  <tr   style="background-color:  #48C9B0">
                     <th width="20px">ID</th>
-                    <th>ID_Afiliacion</th>
-                    <th>Id_Persona</th>
+                    <th>Afiliacion</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>C.i.</th>
                     <th>Ocupacion</th>
                     <th>Observacion</th>
                     <th colspan="2">&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
+               
                   @foreach($pacientes as $paciente)
                  <tr>
                 <td>{{$paciente->id }}</td>
-                <td>{{$paciente->persona_id}}</td>
-                <td>{{$paciente->afiliacion_id}}</td>
+                <td>{{$paciente->afiliacion->nombre}}</td>
+                <td>{{$paciente->persona->nombre}}</td>
+                  <td>{{$paciente->persona->apellido1}}</td>
+                  <td>{{$paciente->persona->cedula}}</td>
                 <td>{{$paciente->ocupacion}}</td>
                 <td>{{$paciente->descripcion}}</td>
-                <td width="10px"><a href="{{route('paciente.edit', $paciente->id)}}"  class="btn btn-warning btn-sm">Editar</a></td>
+                
+                <td width="10px">
+                  <a href="{{route('paciente.show', $paciente->id)}}"  class="btn btn-warning btn-sm">Ver</a></td>
+
+                <td width="10px">
+                  <a href="{{route('paciente.edit', $paciente->id)}}"  class="btn btn-warning btn-sm">Editar</a></td>
           
                  <td>
                 <form action="{{route('paciente.destroy', $paciente->id)}}" method="POST">
@@ -128,6 +138,7 @@
                 </form>
                  </td>
               </tr>
+
                   @endforeach
                 </tbody>
 

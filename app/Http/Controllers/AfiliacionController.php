@@ -38,7 +38,7 @@ class AfiliacionController extends Controller
     public function store(Request $request)
     {
 
-       $f=new Afiliacion;
+        $f=new Afiliacion;
         $f->nombre= $request->nombre;
         $f->descripcion=$request->descripcion;
         $f->save();

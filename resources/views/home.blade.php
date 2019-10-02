@@ -11,7 +11,7 @@
     <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
     <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
     <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
-    <title>menu principal</title>
+    <title>Administracion</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,11 +48,11 @@
           </ul>
         </li>
         <!-- User Menu-->
-        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
+       <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Profile</a></li>
-            <li><a class="dropdown-item" href="page-login.html"><i class="fa fa-sign-out fa-lg"></i> Logout</a></li>
+            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Configuracion</a></li>
+            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
+            <li><a class="dropdown-item" href="/logout"><i class="fa fa-sign-out fa-lg"></i> Cerrar sesion</a></li>
           </ul>
         </li>
       </ul>
@@ -60,27 +60,24 @@
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-      <div class="app-sidebar__user"><img class="app-sidebar__user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/48.jpg" alt="User Image">
+      <div class="app-sidebar__user"><img width="65px" height="65px" class="app-sidebar__user-avatar" src="imagenes/img/administradora.jpg" alt="User Image">
         <div>
-          <p class="app-sidebar__user-name">Efrain vedia</p>
-          <p class="app-sidebar__user-designation">Fisioterapeuta</p>
+          <p class="app-sidebar__user-name">Claudia Llanos</p>
+          <p class="app-sidebar__user-designation">Administracion</p>
         </div>
       </div>
       <ul class="app-menu">
-        <li><a class="app-menu__item" href="#"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Agenda Medica</span></a></li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Registro Paciente</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+         <li class="app-menu__item "style="background-color:#1F618D"   class="header">NAVEGACION PRINCIPAL</li>
+        <li><a class="app-menu__item " href="#"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Agenda Medica</span></a></li>
+        
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-address-card" aria-hidden="true"></i><span class="app-menu__label">Registro Paciente</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="{{route('paciente.index')}}"><i class="icon fa fa-circle-o"></i> Registro</a></li>
-            <li><a class="treeview-item" href="https://fontawesome.com/v4.7.0/icons/" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Reportes</a></li>
+            <li><a class="treeview-item" href="{{route('paciente.index')}}"><i class="icon fa fa-sticky-note-o" aria-hidden="true"></i> Registro</a></li>
+            <li><a class="treeview-item" href="" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Reportes</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Diagnostico Medico</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="/pacientes"><i class="icon fa fa-circle-o"></i> Registro Diagnostico</a></li>
-            <li><a class="treeview-item" href="{{route('tratamiento.index')}}" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Tratamientos</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Gestionar Historial</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-database" aria-hidden="true"></i><span class="app-menu__label">Gestionar Historial</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="form-components.html"><i class="icon fa fa-circle-o"></i>Evolucion Paciente</a></li>
             <li><a class="treeview-item" href="form-custom.html"><i class="icon fa fa-circle-o"></i> Reporte</a></li>
@@ -88,48 +85,42 @@
             
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Gestionar Ingresos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-credit-card-alt" aria-hidden="true"></i><span class="app-menu__label">Gestionar Ingresos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="table-basic.html"><i class="icon fa fa-circle-o"></i>Registro</a></li>
             <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i>Reporte</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Gestionar Egresos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-cc" aria-hidden="true"></i><span class="app-menu__label">Gestionar Egresos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="table-basic.html"><i class="icon fa fa-circle-o"></i>Registro</a></li>
             <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i>Reporte</a></li>
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Empleados</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="blank-page.html"><i class="icon fa fa-circle-o"></i> Registro</a></li>
-            
-           
-          </ul>
-        </li>
+       
 
   
 
-<li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Usuario y Roles</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+<li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-circle-o" aria-hidden="true"></i><span class="app-menu__label">Usuario y Roles</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
-            <li><a class="treeview-item" href="Rol"><i class="icon fa fa-circle-o"></i>Usuario</a></li>
-            <li><a class="treeview-item" href="{{route('rol.index')}}"><i class="icon fa fa-circle-o"></i>Rol</a></li>
-            <li><a class="treeview-item" href="Usuarios_roles/rol"><i class="icon fa fa-circle-o"></i>Reporte</a></li>
+            <li><a class="treeview-item" href="{{route('usuario.index')}}"><i class="icon fa fa-user-plus" aria-hidden="true"></i>Usuarios</a></li>
+            <li><a class="treeview-item" href="{{route('rol.index')}}"><i class="icon fa fa-male" aria-hidden="true"></i>Roles</a></li>
+            
             
           </ul>
         </li>
+ <li><a class="app-menu__item " href="{{route('filiacion.index')}}"><i class="app-menu__icon fa fa-id-badge" aria-hidden="true"></i><span class="app-menu__label">Afiliacion</span></a></li>
 
-<li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Backup</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+<li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-upload" aria-hidden="true"></i><span class="app-menu__label">Backup</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="blank-page.html"><i class="icon fa fa-circle-o"></i> Generar backup</a></li>
           </ul>
         </li>
 
-<li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">Afiliacion</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="{{route('filiacion.index')}}"><i class="icon fa fa-circle-o"></i>Filiacion</a></li>
-          </ul>
-        </li>
+
+       
+        <li><a class="treeview-item" href="/medico"><i class="icon fa fa-sign-out"></i>Vista Medico</a></li>
+        <li><a class="treeview-item" href="/enfermera"><i class="icon fa fa-sign-out"></i>Vista enfermeria</a></li>
 
       </ul>
     </aside>

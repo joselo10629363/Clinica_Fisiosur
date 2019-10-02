@@ -11,25 +11,36 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'LoginController@form');
+Route::post('/login', 'LoginController@login');
 
+Route::group(['middleware'=>['auth']], function(){
+	Route::get('/logout',function(){
+		Auth::logout();
+		return redirect()->action('LoginController@form');
+	});
+});
+Route::get('admin', 'AdminController@index');
 Route::resource ('rol','RolController');
 Route::resource ('filiacion','AfiliacionController');
 Route::resource ('paciente','PacienteController');
+
+
+Route::resource ('usuario','UsuarioController');
+Route::get('enfermera', function () {
+    return view('vistaenfermeria');});
+
+
+
+
+////////////////////
+Route::get('medico', function () {
+    return view('vistamedico');});
+
+Route::resource ('medicos','MedicoController');
+Route::resource ('atencion','AtencionController');
 Route::resource ('tratamiento','TratamientoController');
-
-
-
-
-Route::get('login', function () {
-    return view('login');
-});
-
-Route::get('usuario/createrol', function () {
-    return view('usuario/createrol');
-    
-});
-
-
+Route::resource ('diagnostico','DiagnosticoController');
+Route::resource ('programacion','ProgramacionController');
+Route::resource ('patologia','PatologiaController');
+Route::resource ('evolucion','EvolucionController');

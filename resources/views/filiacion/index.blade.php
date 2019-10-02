@@ -9,7 +9,7 @@
             <h3 class="tile-title">LISTADO DE FILIACION</h3>
              <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#crear"><i class="fa fa-plus"></i>Nuevo</a>
               
-              @include('usuario/fragment/info')
+              @include('rol/fragment/info')
               <table class="table table-hover table-striped">
                 <thead>
                   <tr>

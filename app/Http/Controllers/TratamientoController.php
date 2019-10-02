@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Tratamiento;
 
@@ -14,8 +13,8 @@ class TratamientoController extends Controller
      */
     public function index()
     {
-      $tratamientos=Tratamiento::orderBy('id','DESC')->paginate(5);
-       return view('tratamiento.index',compact('tratamientos') );  
+    $tratamientos=Tratamiento::orderBy('id','DESC')->paginate(5);
+       return view('tratamiento.index',compact('tratamientos') );   
     }
 
     /**
@@ -25,7 +24,7 @@ class TratamientoController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,14 +33,13 @@ class TratamientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+   public function store(Request $request)
     {
-         $t=new Tratamiento;
-        $t->nombre= $request->nombre;
-        $t->descripcion=$request->descripcion;
-        $t->save();
-
-        return redirect()->route('tratamiento.index')->with('info','El nuevo tipo de tratamiento se registro con exito');
+       $tratamiento=new Tratamiento;
+        $tratamiento->nombre=$request->nombre;
+        $tratamiento->descripcion=$request->descripcion;
+        $tratamiento->save();
+  return back()->with('info','El Nuevo tipo de tratamiento fue registrado correctamente');
     }
 
     /**
@@ -75,7 +73,7 @@ class TratamientoController extends Controller
      */
     public function update(Request $request, $id)
     {
-   
+        //
     }
 
     /**
@@ -86,8 +84,8 @@ class TratamientoController extends Controller
      */
     public function destroy($id)
     {
-    $f=Tratamiento::find($id);
+    $tratamientos=Tratamiento::find($id);
         $tratamientos->delete();
-        return back()->with('info', 'El tipo de tratamiento fue eliminado');
+        return back()->with('info', 'El tratamiento fue retirado');
     }
 }

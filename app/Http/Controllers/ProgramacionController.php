@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Tratamiento;
+use App\Diagnostico;
+use App\Programacion_tratamiento;
 class ProgramacionController extends Controller
 {
     /**
@@ -13,7 +15,8 @@ class ProgramacionController extends Controller
      */
     public function index()
     {
-        //
+        $tratamientos=Tratamiento::all();
+       return view('programaciones.crear', compact('tratamientos'));
     }
 
     /**
@@ -34,7 +37,17 @@ class ProgramacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+     
+    
+        $programacion=new Programacion_tratamiento();
+         $programacion->fecha=$request->fecha;
+        $programacion->dia=$request->dia;
+         $programacion->horario=$request->horario;
+          $programacion->estado=$request->estado;
+        $programacion->diagnostico_id=Diagnostico::get()->max('id');
+        $programacion->save();
+        return back()->with('info','Se realizo una nueva programacion de Tratamiento');
+
     }
 
     /**

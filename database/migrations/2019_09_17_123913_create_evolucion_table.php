@@ -15,15 +15,14 @@ class CreateEvolucionTable extends Migration
     {
         Schema::create('evolucion', function (Blueprint $table) {
             $table->bigIncrements('id');
-             $table->bigInteger('paciente_id')->unsigned();
             $table->bigInteger('diagnostico_id')->unsigned();
-            $table->string('fecha');
+            $table->bigInteger('tratamiento_id')->unsigned();
             $table->string('sesion',2);
 
            $table->string('observacion',255);
             $table->timestamps();
             
-            $table->foreign('paciente_id')->references('id')->on('paciente')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('tratamiento_id')->references('id')->on('tratamientos')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('diagnostico_id')->references('id')->on('diagnostico')->onDelete('cascade')->onUpdate('cascade');
             
             

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Diagnostico;
+use App\Tratamiento;
+use App\Evolucion;
+use App\programacion_tratamiento;
 
 class EvolucionController extends Controller
 {
@@ -13,7 +17,10 @@ class EvolucionController extends Controller
      */
     public function index()
     {
-        //
+        
+    $programaciones=programacion_tratamiento::orderBy('horario','ASC')->paginate(5);
+       return view('evolucion.index',compact('programaciones') );   
+       
     }
 
     /**
@@ -23,7 +30,7 @@ class EvolucionController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +41,13 @@ class EvolucionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $evolucion=new Evolucion;
+        $evolucion->diagnostico_id= $request->diagnostico_id;
+        $evolucion->sesion=$request->sesion;
+        $evolucion->tratamiento_id=$request->t_id;
+        $evolucion->observacion=$request->observacion;
+        $evolucion->save();
+        return back()->with('info','El registro de evolucion fue registrado correctamente');
     }
 
     /**
@@ -44,8 +57,11 @@ class EvolucionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    { 
+        $diagnostico=Diagnostico::find($id);
+        $tratamientos=Tratamiento::all();
+       return view('evolucion.crear',compact('tratamientos','diagnostico') ); 
+    
     }
 
     /**

@@ -8,9 +8,16 @@ class Persona extends Model
 {
      protected $table = 'persona';
 
+     public function usuario()
+        {
+        	return $this->hasMany(Usuario::class);
+        }
 
-     public function persona(){
-		 return $this->hasOne(::class);
-	} 
+ public function paciente()
+        {
+        	return $this->hasMany(Paciente::class);
+        }
+        
+
 }
   
