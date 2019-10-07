@@ -4,7 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Ingreo extends Model
+class Ingreso extends Model
 {
-    
+
+
+protected $table = 'ingresos';  
+ 
 }

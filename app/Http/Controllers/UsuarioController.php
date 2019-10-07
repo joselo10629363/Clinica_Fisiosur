@@ -53,11 +53,11 @@ class UsuarioController extends Controller
         $usuario=new Usuario();
         $usuario->rol_id=$request->rol_id;
         $usuario->email=$request->email;
-      $usuario->password=bcrypt($request->password);
+        $usuario->password=bcrypt($request->password);
         $usuario->persona_id=persona::get()->max('id');
         
         $usuario->save();
-        return redirect()->route('usuario.index')->with('info','El usuario se creo');
+        return back()->with('info','El usuario se registro exitosamente');
     }
 
     /**

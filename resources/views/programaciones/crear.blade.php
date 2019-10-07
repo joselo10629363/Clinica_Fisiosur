@@ -34,7 +34,7 @@
         <label for="">Dias de tratamientos</label>
                 <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>
 
-    <select style="width:400px;" class="form-control" name="dia[]"  id="demoSelect" multiple="multiple">
+    <select style="width:400px;" class="form-control" name="dia"  id="demoSelect" multiple="multiple">
                 <optgroup label="Selecionar dias">
                   <option >Todos los dias</option>
                   <option value="lunes" >Lunes</option>
@@ -57,7 +57,6 @@
 <span class="input-group-addon">
 
   <span class="input-group-text" style=" height: 35px;/*startDM*/background-color: #222222 !important;color: #eeeeee !important;/*endDM*/;/*startDM*/background-color: #222222 !important;color: #eeeeee !important;/*endDM*/"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
-
 <span class="glyphicon glyphicon-time"></span>
 </span>
 <input type="text" class="form-control" name="horario" placeholder="Selecione hora" />

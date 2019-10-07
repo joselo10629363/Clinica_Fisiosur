@@ -43,7 +43,7 @@ class AfiliacionController extends Controller
         $f->descripcion=$request->descripcion;
         $f->save();
 
-        return redirect()->route('filiacion.index')->with('info','Nueva Afiliacion Guardado');
+        return back()->with('info','Nueva Afiliacion Guardado');
     }
 
     /**

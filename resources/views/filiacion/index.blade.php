@@ -12,12 +12,12 @@
               @include('rol/fragment/info')
               <table class="table table-hover table-striped">
                 <thead>
-                  <tr>
+                  <tr style="background-color:#5DADE2 " >
                     <th width="20px">ID</th>
                     <th>Nombre</th>
                      <th>Descripcion</th>
                     <th colspan="2">&nbsp;</th>
-                  </tr>
+                  </tr >
                 </thead>
                 <tbody>
                   @foreach($f as $filia)

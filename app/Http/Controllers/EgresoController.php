@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Egreso;
+use App\Concepto;
+use App\Usuario;
 class EgresoController extends Controller
 {
     /**
@@ -13,7 +15,11 @@ class EgresoController extends Controller
      */
     public function index()
     {
-        //
+         $conceptos=Concepto::orderBy('id','DESC')->paginate(5);
+      
+      $egresos=Egreso::orderBy('id','DESC')->paginate(5);
+       $usuarios=Usuario::All();
+       return view('egresos.index',compact('conceptos', 'egresos','usuarios') ); 
     }
 
     /**
@@ -34,7 +40,14 @@ class EgresoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $egreso=new Egreso;
+        $egreso->concepto_id= $request->concepto_id;
+        $egreso->usuario_id=$request->usuario_id;
+        $egreso->monto_total=$request->monto;
+        $egreso->descripcion=$request->descripcion;
+        $egreso->save();
+        return back()->with('info','El Egreso fue registrado de manera correcta');
     }
 
     /**

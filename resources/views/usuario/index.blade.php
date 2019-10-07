@@ -100,13 +100,13 @@
             @include('rol/fragment/info')
               <table class="table table-hover table-striped">
                 <thead>
-                  <tr>
+                  <tr style="background-color:#5DADE2 ">
                     <th width="20px">ID</th>
                     <th>Rol</th>
                     <th>Usuario</th>
                     <th>Correo</th>
                  <th>Fechado</th>
-                    <th colspan="2">&nbsp;</th>
+                    <th colspan="3">&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>

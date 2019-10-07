@@ -44,3 +44,7 @@ Route::resource ('diagnostico','DiagnosticoController');
 Route::resource ('programacion','ProgramacionController');
 Route::resource ('patologia','PatologiaController');
 Route::resource ('evolucion','EvolucionController');
+Route::resource ('egreso','EgresoController');
+Route::resource ('concepto','ConceptoController');
+Route::resource ('ingreso','ingresoController');
+Route::get ('buscar_pacientes/{afiliacion}/{dato?}' ,'IngresoController@buscar_pacientes');

@@ -22,4 +22,8 @@ class Usuario extends Model
         	
         	return $this->belongsTo(Persona::class);
         }
+         public function egreso()
+        {
+            return $this->hasMany(Egreso::class);
+        }
 }

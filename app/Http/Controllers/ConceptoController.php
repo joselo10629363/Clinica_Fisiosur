@@ -3,14 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Paciente;
-use App\Afiliacion;
-use App\Programacion_tratamiento;
-use App\Usuario;
-use App\Ingreso;
-
-
-class IngresoController extends Controller
+use App\Concepto;
+class ConceptoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +13,9 @@ class IngresoController extends Controller
      */
     public function index()
     {
-
-    $programaciones=Programacion_tratamiento::orderBy('id','DESC')->paginate(6);
-      $afiliaciones=Afiliacion::orderBy('id','DESC')->paginate(6);
-
-       return view('ingresos.index',compact('programaciones','afiliaciones') ); 
+        
+        $conceptos=Concepto::orderBy('id','DESC')->paginate(5);
+       return view('egresos.indexconcepto',compact('conceptos') );   
     }
 
     /**
@@ -44,18 +36,13 @@ class IngresoController extends Controller
      */
     public function store(Request $request)
     {
+         $concepto=new Concepto;
+        $concepto->nombre= $request->nombre;
+       
 
-        $ingreso=new Ingreso;
-         $ingreso->usuario_id=$request->usuario_id;
-        $ingreso->paciente_id= $request->paciente_id;
-        $ingreso->monto_total=$request->monto_total;
+        $concepto->save();
 
-        $ingreso->concepto=$request->concepto;
-  $ingreso->saldo=$request->saldo;
-        $ingreso->descripcion=$request->descripcion;
-        $ingreso->save();
-        return back()->with('info','El registro de pago se guardado exitosamente');
-
+        return back()->with('info','El nuevo registro de un concepto se realizo correctamente');
     }
 
     /**
@@ -66,9 +53,7 @@ class IngresoController extends Controller
      */
     public function show($id)
     {
-        $usuarios=Usuario::all();
-      $programacion=Programacion_tratamiento::find($id);
-      return view('ingresos.recibo', compact('programacion','usuarios'));
+        //
     }
 
     /**
@@ -102,15 +87,9 @@ class IngresoController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
 
-      public function buscar_pacientes($afiliacion,$dato='')
-    {
-$pacientes=Paciente($afiliacion,$dato)->ppaginate(8);
-$afiliaciones=Afiliacion::all();
-$afiliacionselec=$afiliaciones->find($afiliacion);
- return view('ingresos.index',compact('pacientes', 'afiliaciones', 'afiliacionselect') ); 
-
+     $concepto=Concepto::find($id);
+        $concepto->delete();
+        return back()->with('info', 'El concepto de egreso  fue eliminado');
     }
 }

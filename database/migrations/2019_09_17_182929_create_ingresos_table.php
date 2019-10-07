@@ -15,16 +15,17 @@ class CreateIngresosTable extends Migration
     {
         Schema::create('ingresos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('paciente_id')->unsigned();
+       
             $table->bigInteger('usuario_id')->unsigned();
-            $table->bigInteger('detalle_id')->unsigned();
-            $table->string('fecha');
-            $table->string('importe',4);
-            $table->string('descripcion',100);
+            $table->bigInteger('paciente_id')->unsigned();
+            $table->string('monto_total',10);
+             $table->string('concepto',50);
+            $table->string('saldo',10);
+            $table->string('descripcion',255);
             $table->timestamps();
-            $table->foreign('paciente_id')->references('id')->on('paciente')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade')->onUpdate('cascade');
-        $table->foreign('detalle_id')->references('id')->on('detalle_ingreso')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('paciente_id')->references('id')->on('paciente')->onDelete('cascade')->onUpdate('cascade');
+
         });
     }
 

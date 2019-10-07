@@ -34,7 +34,7 @@
                     <th>C.i.</th>
                     <th>Ocupacion</th>
                     <th>Observacion</th>
-                    <th colspan="2">&nbsp;</th>
+                    <th colspan="3">&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -49,8 +49,7 @@
                 <td>{{$paciente->ocupacion}}</td>
                 <td>{{$paciente->descripcion}}</td>
                 
-                <td width="10px">
-                  <a href="{{route('atencion.show', $paciente->id)}}"  class="btn btn-info ">Detalles</a></td>
+                
 
                 <td width="10px">
 

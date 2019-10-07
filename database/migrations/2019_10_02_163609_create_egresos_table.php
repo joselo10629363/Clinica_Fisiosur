@@ -15,10 +15,17 @@ class CreateEgresosTable extends Migration
     {
         Schema::create('egresos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('concepto_id')->unsigned();
+            $table->bigInteger('usuario_id')->unsigned();
+            $table->string('monto_total',10);
+            $table->string('descripcion',255);
             $table->timestamps();
+            $table->foreign('concepto_id')->references('id')->on('concepto')->onDelete('cascade')->onUpdate('cascade');
+              $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade')->onUpdate('cascade');
+             
+
         });
     }
-
     /**
      * Reverse the migrations.
      *

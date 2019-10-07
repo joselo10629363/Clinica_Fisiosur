@@ -109,7 +109,7 @@
                     <th>C.i.</th>
                     <th>Ocupacion</th>
                     <th>Observacion</th>
-                    <th colspan="2">&nbsp;</th>
+                    <th colspan="3">&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>

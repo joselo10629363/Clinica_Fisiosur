@@ -24,7 +24,7 @@
              @include('rol/fragment/info')
               <table class="table table-hover table-striped">
                 <thead>
-                  <tr>
+                  <tr style="background-color:#5DADE2 ">
                     <th width="20px">ID</th>
                     <th>Nombre</th>
                     <th colspan="2">&nbsp;</th>
@@ -36,7 +36,7 @@
                 <td>{{$rol->id }}</td>
                 <td>{{$rol->nombre}}</td>
 
-                     <td width="10px">  <a href="{{route('rol.edit', $rol->id)}}"  class="btn btn-primary pull-right" >Editar</a>
+                     <td width="10px">  <a href="{{route('rol.edit', $rol->id)}}"  class="btn btn-warning btn-sm pull-right" >Editar</a>
 
                 </td>
           

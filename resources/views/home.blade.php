@@ -16,7 +16,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="{{url('/')}}/css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
@@ -60,7 +60,7 @@
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-      <div class="app-sidebar__user"><img width="65px" height="65px" class="app-sidebar__user-avatar" src="imagenes/img/administradora.jpg" alt="User Image">
+      <div class="app-sidebar__user"><img width="65px" height="65px" class="app-sidebar__user-avatar" src="{{url('/')}}/imagenes/img/administradora.jpg" alt="User Image">
         <div>
           <p class="app-sidebar__user-name">Claudia Llanos</p>
           <p class="app-sidebar__user-designation">Administracion</p>
@@ -85,21 +85,17 @@
             
           </ul>
         </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-credit-card-alt" aria-hidden="true"></i><span class="app-menu__label">Gestionar Ingresos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="table-basic.html"><i class="icon fa fa-circle-o"></i>Registro</a></li>
-            <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i>Reporte</a></li>
-          </ul>
-        </li>
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-cc" aria-hidden="true"></i><span class="app-menu__label">Gestionar Egresos</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="table-basic.html"><i class="icon fa fa-circle-o"></i>Registro</a></li>
-            <li><a class="treeview-item" href="table-data-table.html"><i class="icon fa fa-circle-o"></i>Reporte</a></li>
-          </ul>
-        </li>
-       
+
+  <li><a class="app-menu__item " href="{{route('ingreso.index')}}"><i class="app-menu__icon fa fa-money" aria-hidden="true"></i><span class="app-menu__label">Gestionar Ingresos</span></a></li> 
 
   
+<li><a class="app-menu__item " href="{{route('egreso.index')}}"><i class="app-menu__icon fa fa-cc" aria-hidden="true"></i><span class="app-menu__label">Gestionar Egresos</span></a></li>
+
+
+
+
+
+
 
 <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-circle-o" aria-hidden="true"></i><span class="app-menu__label">Usuario y Roles</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">

@@ -59,7 +59,7 @@ class PacienteController extends Controller
 
         
         $paciente->save();
-        return redirect()->route('paciente.index')->with('info','Nueva Afiliacion Guardado');
+        return back()->with('info','El registro del nuevo paciente fue exitoso');
     }
 
     /**

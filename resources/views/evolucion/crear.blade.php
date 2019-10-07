@@ -10,7 +10,7 @@
                   <a style="font-style:italic;" class="card-text">Cedula: {{$diagnostico->paciente->persona->cedula}} </a><br>
                   <a style="font-style:italic;" class="card-text">Afiliacion: {{$diagnostico->paciente->afiliacion->nombre}} </a><br>
                
-                  <a style="font-style:italic; font-weight:bold;" class="card-text">Fecha de registro: {{$diagnostico->created_at}} </a>
+                  <a style="font-style:italic; font-weight:bold;" class="card-text">Fecha de registro: {{$diagnostico->created_at}} </a><br>
                   <a style="font-style:italic; font-weight:bold;" class="card-text">Diagnostico: {{$diagnostico->observacion}} </a>
          </div>
          
@@ -105,7 +105,7 @@
             <div class="tile-footer">
               <div class="row">
                 <div class="col-md-8 col-md-offset-3">
-                  <button class="btn btn-danger" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Editar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                  <button class="btn btn-warning" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>Editar</button>&nbsp;&nbsp;&nbsp;<a class="btn btn-secondary" href="#"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
                 </div>
               </div>
             </div>

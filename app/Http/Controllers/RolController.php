@@ -16,7 +16,8 @@ class RolController extends Controller
     {
 
         $rols=Rol::orderBy('id','DESC')->paginate(5);
-       return view('rol.index',compact('rols') );   }
+       return view('rol.index',compact('rols') );   
+   }
 
     /**
      * Show the form for creating a new resource.
