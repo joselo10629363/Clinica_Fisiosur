@@ -34,7 +34,7 @@
         <label for="">Dias de tratamientos</label>
                 <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>
 
-    <select style="width:400px;" class="form-control" name="dia"  id="demoSelect" multiple="multiple">
+    <select style="width:400px;" class="form-control" name="dia[]"  id="demoSelect" multiple="multiple">
                 <optgroup label="Selecionar dias">
                   <option >Todos los dias</option>
                   <option value="lunes" >Lunes</option>

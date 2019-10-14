@@ -18,7 +18,7 @@ class PacienteController extends Controller
 
     {
         $pacientes=Paciente::orderBy('id','DESC')->paginate(3);
-      $afiliacion=Afiliacion::all();
+      $afiliacion=Afiliacion::where("estado","=","activo")->get();
        return view('paciente.index', compact('afiliacion','pacientes')); 
     }
 

@@ -16,6 +16,7 @@ class CreateAfiliacionTable extends Migration
         Schema::create('afiliacion', function (Blueprint $table) {
             $table->bigIncrements('id',3);
             $table->string('nombre',20);
+            $table->string('estado',10);
             $table->string('descripcion',255);
             $table->timestamps();
         });

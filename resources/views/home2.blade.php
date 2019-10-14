@@ -1,19 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta name="description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
-    <!-- Twitter meta-->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:site" content="@pratikborsadiya">
-    <meta property="twitter:creator" content="@pratikborsadiya">
-    <!-- Open Graph Meta-->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Vali Admin">
-    <meta property="og:title" content="Vali - Free Bootstrap 4 admin theme">
-    <meta property="og:url" content="http://pratikborsadiya.in/blog/vali-admin">
-    <meta property="og:image" content="http://pratikborsadiya.in/blog/vali-admin/hero-social.png">
-    <meta property="og:description" content="Vali is a responsive and free admin theme built with Bootstrap 4, SASS and PUG.js. It's fully customizable and modular.">
-    <title>Administracion</title>
+   
+    
+    <title>Navegacion_Administracion</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +15,9 @@
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="#">Fisiosur</a>
+    <header class="app-header"><a style=" color:#D6166B; font-size: 40px "  class="app-header__logo" href="#">C. Fisiosur</a>
+
+
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -65,9 +58,10 @@
       <div class="app-sidebar__user"><img width="65px" height="65px" class="app-sidebar__user-avatar" src="{{url('/')}}/imagenes/img/administradora.jpg" alt="User Image">
            
             <div>      
-          <p class="app-sidebar__user-name">Claudia Llanos</p>
+        <p class="app-sidebar__user-name">Fernanda mamani</p>
         
-          <p class="app-sidebar__user-designation">Administracion</p>
+          <p class="app-sidebar__user-designation">administardor</p>
+
         </div>
       </div>
       <ul class="app-menu">
@@ -113,16 +107,9 @@
             <li><a class="treeview-item" href="blank-page.html"><i class="icon fa fa-circle-o"></i> Generar backup</a></li>
           </ul>
         </li>
-
-
-       
-        <li><a class="treeview-item" href="/medico"><i class="icon fa fa-sign-out"></i>Vista Medico</a></li>
-        <li><a class="treeview-item" href="/enfermera"><i class="icon fa fa-sign-out"></i>Vista enfermeria</a></li>
-
       </ul>
     </aside>
-    
-
+    @yield('home2')
     <!-- Essential javascripts for application to work-->
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -179,7 +166,7 @@
       var ctxp = $("#pieChartDemo").get(0).getContext("2d");
       var pieChart = new Chart(ctxp).Pie(pdata);
     </script>
-    <!-- Google analytics script-->
+    <!-- Google analytics script-->d
     <script type="text/javascript">
       if(document.location.hostname == 'pratikborsadiya.in') {
       	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -192,7 +179,7 @@
     </script>
    
  <div>
-   @yield('home2')
+  
  </div>
   </body>
 </html>

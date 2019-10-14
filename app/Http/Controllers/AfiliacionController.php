@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Afiliacion;
+use App\User;
+use App\Http\Requests\AfiliacionRequest;
 class AfiliacionController extends Controller
 {
     /**
@@ -13,8 +16,9 @@ class AfiliacionController extends Controller
      */
     public function index()
     {
+    $usuario=Auth::user();
      $f=Afiliacion::orderBy('id','DESC')->paginate(5);
-       return view('filiacion.index',compact('f') );  
+       return view('filiacion.index',compact('f','usuario') );  
         }
     
    
@@ -35,15 +39,16 @@ class AfiliacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( AfiliacionRequest $request)
     {
 
         $f=new Afiliacion;
         $f->nombre= $request->nombre;
         $f->descripcion=$request->descripcion;
+        $f->estado= $request->estado;
         $f->save();
 
-        return back()->with('info','Nueva Afiliacion Guardado');
+        return back()->with('info','El registro de la nueva afiliacion fue exitosa');
     }
 
     /**
@@ -75,9 +80,17 @@ class AfiliacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AfiliacionRequest $request, $id)
     {
-        //
+        
+         $f=Afiliacion::find($id);
+        $f->nombre= $request->nombre;
+        $f->descripcion=$request->descripcion;
+        $f->estado= $request->estado;
+        $f->save();
+
+        return back()->with('info', 'El registro del afiliado se modifico');
+
     }
 
     /**

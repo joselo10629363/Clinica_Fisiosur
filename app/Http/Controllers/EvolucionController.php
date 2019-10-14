@@ -18,7 +18,10 @@ class EvolucionController extends Controller
     public function index()
     {
         
-    $programaciones=programacion_tratamiento::orderBy('horario','ASC')->paginate(5);
+   // $programaciones=programacion_tratamiento::where("estado","=","activo")->get()->orderBy('horario','ASC');
+
+$programaciones= programacion_tratamiento::where('estado','activo')->orderBy('horario','ASC')->paginate(6);
+
        return view('evolucion.index',compact('programaciones') );   
        
     }

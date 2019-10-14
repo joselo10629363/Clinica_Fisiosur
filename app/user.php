@@ -11,6 +11,26 @@ class User extends Authenticatable
     use Notifiable;
     
     protected $table = 'usuario';
+    public function persona(){
+       return $this->belongsTo(Persona::class);
+        }
+        public function rol()
+        {
+
+            return $this->belongsTo(Rol::class);
+        }
+
+         public function esAdmin()
+        {
+
+            if ($this->rol->nombre=='Administracion'){
+                
+
+                return true;
+            }
+            return false;
+        }
+        
 
     /**
      * The attributes that are mass assignable.

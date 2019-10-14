@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Usuario;
-use Auth;
 use Hash;
 use App\User;
 class LoginController extends Controller
@@ -15,15 +15,29 @@ class LoginController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function form(){
-        if (Auth::user()) 
-
-        return view('home');
-      else
-        return view('login')->with('info','los credenciales no coisiden con ninguno de nuestros registros');
 
 
+         $usuario=Auth::user();
+        if (Auth::user()) {
 
+          if ($usuario->esAdmin()) {
+      
+            return view('home', compact('usuario'));
+          }else
+          {
+               return view('vistamedico', compact('usuario'));
+          }
+       
     }
+      else
+      {
+        return view('login')->with('info','los credenciales no coisiden con ninguno de nuestros registros');
+    }
+        }
+
+
+
+   
 
     /**
      * Show the form for creating a new resource.

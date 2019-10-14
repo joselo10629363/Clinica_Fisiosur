@@ -52,7 +52,8 @@
     <aside class="app-sidebar">
       <div class="app-sidebar__user"><img width="70px" height="70px" class="app-sidebar__user-avatar" src="{{url('/')}}/imagenes/img/medico.jpg" alt="User Image">
         <div>
-      <br><p class="app-sidebar__user-name">Efrain Vedia</p>
+      <br>
+      <p class="app-sidebar__user-name">jose luis</p>
         
           <p class="app-sidebar__user-designation">Medico</p>
         </div>

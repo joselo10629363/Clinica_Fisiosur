@@ -1,8 +1,8 @@
  <div class="modal fade" id="crear">
       <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-             <h1>Nueva Afiliacion</h1>
+        <div class="modal-content" >
+          <div class="modal-header" style="background-color:#73C6B6">
+             <h1>Nueva Afiliación</h1>
             <button class="btn btn-danger btn-sm" type="button" class="close" data-dismiss="modal">
               <span>&times;</span>
             </button>
@@ -20,11 +20,21 @@
     <label for="">Descripcion</label>
     <input type="text"  required="" placeholder="Descripcion" name="descripcion" class="form-control">
     </div>
+
+    <div class="form-group">
+                    <label for="">Estado del Afiliado</label>  
+                <select  name="estado" class="form-control">
+                      <option value="Activo">Activo  </option>
+                      <option value="Inactivo">Desactivado</option>
+                     
+                    </select> 
+                  </div>
+
   <button type="subtmit" class=" btn btn-primary pull-right"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>
  </form> 
           </div>
 
-          <div class="modal-footer">
+          <div class="modal-footer" style="background-color:#73C6B6"  >
            
           </div>
         </div>

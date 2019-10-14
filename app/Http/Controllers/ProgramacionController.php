@@ -41,7 +41,10 @@ class ProgramacionController extends Controller
     
         $programacion=new Programacion_tratamiento();
          $programacion->fecha=$request->fecha;
-        $programacion->dia=$request->dia;
+      
+ 
+
+        $programacion->dia= $request->dia;
          $programacion->horario=$request->horario;
           $programacion->estado=$request->estado;
         $programacion->diagnostico_id=Diagnostico::get()->max('id');

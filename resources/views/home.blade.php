@@ -62,8 +62,11 @@
     <aside class="app-sidebar">
       <div class="app-sidebar__user"><img width="65px" height="65px" class="app-sidebar__user-avatar" src="{{url('/')}}/imagenes/img/administradora.jpg" alt="User Image">
         <div>
-          <p class="app-sidebar__user-name">Claudia Llanos</p>
-          <p class="app-sidebar__user-designation">Administracion</p>
+          
+          <p class="app-sidebar__user-name">{{$usuario->persona->nombre}}</p>
+        
+          <p class="app-sidebar__user-designation">{{$usuario->rol->nombre}}</p>
+
         </div>
       </div>
       <ul class="app-menu">
@@ -114,23 +117,18 @@
         </li>
 
 
-       
-        <li><a class="treeview-item" href="/medico"><i class="icon fa fa-sign-out"></i>Vista Medico</a></li>
-        <li><a class="treeview-item" href="/enfermera"><i class="icon fa fa-sign-out"></i>Vista enfermeria</a></li>
-
+      
       </ul>
     </aside>
     <main class="app-content">
-      <div class="app-title">
-        <div>
-          <h1><i class="fa fa-dashboard"></i>Tratamientos programados</h1>
-          <p>Agenda Medica Respecto a los tratamientos de los pacientes</p>
-        </div>
-        <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item"><a href="#">Agenda</a></li>
-        </ul>
-      </div>
+     
+
+      
+
+
+
+
+
       
     </main>
     <!-- Essential javascripts for application to work-->
@@ -201,7 +199,7 @@
       }
     </script>
     <div class="container">
-         @yield('home')
+      
     </div>
  
   </body>

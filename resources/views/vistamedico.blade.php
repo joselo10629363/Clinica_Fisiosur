@@ -53,9 +53,9 @@
       <div class="app-sidebar__user"><img width="65px" height="65px" class="app-sidebar__user-avatar" src="imagenes/img/medico.jpg" alt="User Image">
         <div>
                 
-          <p class="app-sidebar__user-name">Efrain Vedia</p>
+          <p class="app-sidebar__user-name">{{$usuario->persona->nombre}}</p>
         
-          <p class="app-sidebar__user-designation">Medico</p>
+          <p class="app-sidebar__user-designation">{{$usuario->rol->nombre}}</p>
         </div>
       </div>
       <ul class="app-menu">
