@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Egreso;
 use App\Concepto;
 use App\Usuario;
+use App\Http\Requests\EgresoRequest;
 class EgresoController extends Controller
 {
     /**
@@ -38,7 +39,7 @@ class EgresoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EgresoRequest $request)
     {
         
         $egreso=new Egreso;
@@ -92,6 +93,9 @@ class EgresoController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+     $egreso=Egreso::find($id);
+     $egreso->delete();
+     return back()->with('info','Elregistro de egreso fue eliminado de manera correcta');
     }
 }

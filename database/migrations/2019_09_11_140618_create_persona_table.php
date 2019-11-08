@@ -20,7 +20,7 @@ class CreatePersonaTable extends Migration
             $table->string('apellido2',25);
             $table->string('cedula',10);
             $table->string('genero',2);
-            $table->string('telefono',15);
+            $table->string('telefono',10);
             $table->string('domicilio',50);
             $table->timestamps();
         });

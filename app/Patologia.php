@@ -12,4 +12,5 @@ class Patologia extends Model
         {
         	return $this->hasMany(Diagnostico::class);
         }
+       
 }

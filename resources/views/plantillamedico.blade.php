@@ -53,25 +53,27 @@
       <div class="app-sidebar__user"><img width="70px" height="70px" class="app-sidebar__user-avatar" src="{{url('/')}}/imagenes/img/medico.jpg" alt="User Image">
         <div>
       <br>
-      <p class="app-sidebar__user-name">jose luis</p>
+      <p class="app-sidebar__user-name">{{auth()->user()->persona->nombre}}</p>
         
-          <p class="app-sidebar__user-designation">Medico</p>
+          <p class="app-sidebar__user-designation">{{auth()->user()->rol->nombre}}</p>
         </div>
       </div>
 
       <ul class="app-menu">
          <li class="app-menu__item "style="background-color:#1F618D"   class="header">NAVEGACION PRINCIPAL</li>
                   <li><a class="app-menu__item " href="#"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Agenda Medica</span></a></li>
-        <li><a class="app-menu__item " href="#"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pacientes</span></a></li>
+        <li><a class="app-menu__item " href="{{route('listar.index')}}"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pacientes</span></a></li>
         <li><a class="app-menu__item " href="{{route('atencion.index')}}"><i class="app-menu__icon fa fa-thermometer-three-quarters" aria-hidden="true"></i><span class="app-menu__label">Diagnostico Medico</span></a></li>
-
-        <li><a class="app-menu__item " href="{{route('tratamiento.index')}}"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label">Registro de Tratamiento</span></a></li>
 
 
     <li><a class="app-menu__item " href="{{route('evolucion.index')}}"><i class="app-menu__icon fa fa-bar-chart" aria-hidden="true"></i><span class="app-menu__label">Gestionar tratamientos</span></a></li>
 
-<li><a class="app-menu__item " href=" {{route('patologia.index')}}"><i class="app-menu__icon fa fa-plus-square-o" aria-hidden="true" aria-hidden="true"></i><span class="app-menu__label">Patologias</span></a></li>
-          
+<li><a class="app-menu__item " href=" {{route('tratamiento.index')}}"><i class="app-menu__icon fa fa-plus-square-o" aria-hidden="true" aria-hidden="true"></i><span class="app-menu__label">Tratamientos medicos</span></a></li>
+
+<li><a class="app-menu__item " href=" {{route('medicos.index')}}"><i class="app-menu__icon fa fa-plus-square-o" aria-hidden="true" aria-hidden="true"></i><span class="app-menu__label">Medicos</span></a></li>
+
+      <li><a class="app-menu__item " href=" {{route('patologia.index')}}"><i class="app-menu__icon fa fa-plus-square-o" aria-hidden="true" aria-hidden="true"></i><span class="app-menu__label">Patologias</span></a></li>
+
       </ul>
     </aside>
     

@@ -17,7 +17,8 @@ class CreateIngresosTable extends Migration
             $table->bigIncrements('id');
        
             $table->bigInteger('usuario_id')->unsigned();
-            $table->bigInteger('paciente_id')->unsigned();
+            $table->bigInteger('paciente_id')->unsigned()->nullable();
+            $table->bigInteger('afiliacion_id')->unsigned()->nullable();
             $table->string('monto_total',10);
              $table->string('concepto',50);
             $table->string('saldo',10);
@@ -25,6 +26,8 @@ class CreateIngresosTable extends Migration
             $table->timestamps();
             $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('paciente_id')->references('id')->on('paciente')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->foreign('afiliacion_id')->references('id')->on('afiliacion')->onDelete('cascade')->onUpdate('cascade');
 
         });
     }

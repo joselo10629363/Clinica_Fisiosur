@@ -4,7 +4,7 @@
     <div class="app-title">
         <div>
           <h1><i class="fa fa-edit"></i>Listado de los pacientes </h1>
-          <p>Muestra de los mas recientes registros de pacientes ingresados</p>
+          <p>Muestra de los pacientes ingresados  el dia de hoy</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -27,10 +27,10 @@
               <table class="table table-hover table-striped">
                 <thead>
                   <tr style=" background-color: #48C9B0">
-                    <th width="20px">ID</th>
-                    <th>Afiliacion</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
+                 
+                    
+                    <th>Paciente</th>
+                     <th>Afiliacion</th>
                     <th>C.i.</th>
                     <th>Ocupacion</th>
                     <th>Observacion</th>
@@ -41,10 +41,11 @@
                
                   @foreach($pacientes as $paciente)
                  <tr>
-                <td>{{$paciente->id }}</td>
-                <td>{{$paciente->afiliacion->nombre}}</td>
-                <td>{{$paciente->persona->nombre}}</td>
-                  <td>{{$paciente->persona->apellido1}}</td>
+              
+       <td class="mailbox-messages mailbox-name" ><a style="display:block"><i class="fa fa-user"></i>&nbsp;&nbsp; {{$paciente->persona->nombre }}  {{ $paciente->persona-> apellido1 }} {{$paciente->persona->apellido2}}</td>
+                 
+                 <td>{{$paciente->afiliacion->nombre}}</td>
+
                   <td>{{$paciente->persona->cedula}}</td>
                 <td>{{$paciente->ocupacion}}</td>
                 <td>{{$paciente->descripcion}}</td>
@@ -55,7 +56,11 @@
 
                   <a href="{{route('atencion.show', $paciente->id)}}"  class="btn btn-success ">Atender</a></td>
         
+ 
+
         <td>
+
+
          <div class="col-md-6">
                 <div class="toggle-flip">
                   <label>
@@ -66,18 +71,32 @@
               </div>
 
         </td>
+
               </tr>
 
+ 
+
+
                   @endforeach
+
+
+
+
                 </tbody>
 
               </table> 
                {!!$pacientes->render()!!}
           </div>
         </div>
-
+ 
 
       </div>           
 
     </main>
+
+
+ 
+ 
+</body>
+ 
 @stop 

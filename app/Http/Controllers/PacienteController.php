@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Paciente;
 use App\Persona;
 use App\Afiliacion;
+use App\Http\Requests\PacienteRequest;
 
 class PacienteController extends Controller
 {
@@ -38,7 +39,7 @@ class PacienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PacienteRequest $request)
     {
         $persona=new Persona();
         $persona->nombre= $request->nombre;
@@ -56,8 +57,6 @@ class PacienteController extends Controller
          $paciente->ocupacion=$request->ocupacion;
         $paciente->descripcion=$request->descripcion;
         $paciente->persona_id=persona::get()->max('id');
-
-        
         $paciente->save();
         return back()->with('info','El registro del nuevo paciente fue exitoso');
     }
@@ -87,12 +86,11 @@ return view('paciente.mostrar', compact('pacientes'));
     public function edit($id)
     {
              $paciente=Paciente::find($id);
-             $pacientes=Paciente::all();
+            $afiliacion=Afiliacion::where("estado","=","activo")->get();
 
-             if ($paciente) 
-                return view('paciente.editar', compact('paciente','pacientes'));
-            else
-                return view('paciente.index');
+             
+                return view('paciente.editar', compact('paciente','afiliacion'));
+         
              }
 
 
@@ -106,9 +104,30 @@ return view('paciente.mostrar', compact('pacientes'));
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PacienteRequest $request,  $id)
     {
-        //
+
+
+        $paciente=Paciente::find($id);
+        $paciente->afiliacion_id=$request->afiliacion_id;
+         $paciente->ocupacion=$request->ocupacion;
+        $paciente->descripcion=$request->descripcion;
+        $paciente->save();
+
+
+       $persona=Persona::find($paciente->persona_id);
+
+        $persona->nombre= $request->nombre;
+        $persona->apellido1= $request->apellido1;
+        $persona->apellido2= $request->apellido2;
+        $persona->cedula= $request->cedula;
+        $persona->genero= $request->genero; 
+        $persona->telefono= $request->telefono;
+        $persona->domicilio= $request->domicilio;
+        $persona->save();
+
+
+        return back()->with('info','el registro se actualizo de manera correctamente');
     }
 
     /**
@@ -119,6 +138,10 @@ return view('paciente.mostrar', compact('pacientes'));
      */
     public function destroy($id)
     {
-        //
+        $paciente=Paciente::find($id);
+        $persona=Persona::find($paciente->persona_id);
+          $persona->delete();
+        $paciente->delete();
+        return back()->with('info', 'El registro fue eliminado de manera exitosa');
     }
 }

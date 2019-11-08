@@ -15,11 +15,24 @@
        <div class="row">
         <div class="col-md-12">
           <div class="tile">
+               @if ($errors->any())
+             <div  class="alert alert-danger">
+              <button type="button" class="close" data-dismiss="alert">
+                &times;
+              </button>
+               <ul>
+                 @foreach($errors->all() as $error)
+
+                 <li>{{$error}} </li>
+                 @endforeach
+               </ul>
+             </div>
+             @endif
             @include('rol/fragment/info')
             <div class="row">
               <div class="col-lg-6">
                
-    <form class="form-group"  method="POST" action="{{route('paciente.store')}}" enctype="multipart/form-data" >
+    <form class="form-group"    method="POST" action="{{route('paciente.store')}}" enctype="multipart/form-data" >
 
                    @csrf
   <div class="form-group">
@@ -32,7 +45,7 @@
     </div>
  <div class="form-group">
     <label for="">Apellido Materno</label>
-    <input  type="text"required="" placeholder="Apellido" name="apellido2" class="form-control">
+    <input  type="text" placeholder="Apellido" name="apellido2" class="form-control">
     </div>
  <div class="form-group">
     <label for="">Cedula</label>
@@ -98,15 +111,16 @@
             </div>
 
 
-            @include('rol/fragment/info')
+          
               <table class="table table-hover table-striped">
                 <thead>
                   <tr   style="background-color:  #48C9B0">
-                    <th width="20px">ID</th>
-                    <th>Afiliacion</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
+               
+                   
+                    <th>Paciente</th>
+                     <th>Afiliacion</th>
                     <th>C.i.</th>
+                    <th>Telefono</th>
                     <th>Ocupacion</th>
                     <th>Observacion</th>
                     <th colspan="3">&nbsp;</th>
@@ -116,16 +130,18 @@
                
                   @foreach($pacientes as $paciente)
                  <tr>
-                <td>{{$paciente->id }}</td>
-                <td>{{$paciente->afiliacion->nombre}}</td>
-                <td>{{$paciente->persona->nombre}}</td>
-                  <td>{{$paciente->persona->apellido1}}</td>
+              
+                
+                <td class="mailbox-messages mailbox-name" ><a style="display:block"><i class="fa fa-user"></i>&nbsp;&nbsp; {{$paciente->persona->nombre}} {{$paciente->persona->apellido1}}  {{$paciente->persona->apellido2}}</td>
+               
+                 <td>{{$paciente->afiliacion->nombre}}</td>
+
                   <td>{{$paciente->persona->cedula}}</td>
+                   <td>{{$paciente->persona->telefono}}</td>
                 <td>{{$paciente->ocupacion}}</td>
                 <td>{{$paciente->descripcion}}</td>
                 
-                <td width="10px">
-                  <a href="{{route('paciente.show', $paciente->id)}}"  class="btn btn-warning btn-sm">Ver</a></td>
+                 
 
                 <td width="10px">
                   <a href="{{route('paciente.edit', $paciente->id)}}"  class="btn btn-warning btn-sm">Editar</a></td>

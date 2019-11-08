@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\RolRequest;
 use App\Rol;
 
 class RolController extends Controller
@@ -37,13 +38,13 @@ class RolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RolRequest $request)
     {
-     $rols=new Rol;
+        $rols=new Rol;
         $rols->nombre= $request->nombre;
         $rols->save();
 
-    return redirect()->route('rol.index')->with('info','El rol fue Guardado');
+    return back()->with('info','El Nuevo rol se registro exitosamente');
 
      
     }
@@ -65,15 +66,7 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-      $rols=Rol::find($id);
-
-        return view('rol.editar')->with( ['role' => $rols] );
-      
-
-    }
-
+  
     /**
      * Update the specified resource in storage.
      *
@@ -81,13 +74,13 @@ class RolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RolRequest $request, $id)
     {
         $rols=Rol::find($id);
         $rols->nombre= $request->nombre;
         $rols->save();
 
-        return redirect()->route('rol.index')->with('info','El rol fue actualizado');
+        return back()->with('info','El rol se actualizo exitosamente');
 
      
     }

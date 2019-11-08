@@ -17,7 +17,7 @@ class CreateUsuarioTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('persona_id')->unsigned();
             $table->bigInteger('rol_id')->unsigned();
-            $table->string('email',255);
+            $table->string('email',255)->uniqid();
             $table->string('password',255);
             $table->timestamps();
             $table->foreign('persona_id')->references('id')->on('persona')->onDelete('cascade')->onUpdate('cascade');

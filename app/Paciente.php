@@ -17,6 +17,9 @@ class Paciente extends Model
 public function diagnostico(){
        return $this->hasMany(Diagnostico::class);
         }
+        public function ingreso(){
+       return $this->hasMany(Ingreso::class);
+        }
 
         
         

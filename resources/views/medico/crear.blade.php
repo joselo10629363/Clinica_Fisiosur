@@ -9,7 +9,7 @@
          
           </div>
           <div class="modal-body">
-        <form class="form-group"  method="POST" action="{{route('medicos.store')}}" enctype="multipart/form-data" >
+        <form class="form-group"  method="POST" autocomplete="off" action="{{route('medicos.store')}}" enctype="multipart/form-data" >
             @csrf
   <div class="form-group">
     <label for="">Nombre</label>

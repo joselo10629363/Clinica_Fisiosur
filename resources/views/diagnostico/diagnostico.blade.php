@@ -33,6 +33,19 @@
        <div class="row">
         <div class="col-md-12">
           <div class="tile">
+              @if ($errors->any())
+             <div  class="alert alert-danger">
+              <button type="button" class="close" data-dismiss="alert">
+                &times;
+              </button>
+               <ul>
+                 @foreach($errors->all() as $error)
+
+                 <li>{{$error}} </li>
+                 @endforeach
+               </ul>
+             </div>
+             @endif
             @include('rol/fragment/info')
             <div class="row">
 
@@ -62,27 +75,29 @@
                   </div>
    
                  <div class="form-group">
-                    <label for="">Medico Del Diagnostico</label>  
-                <select  name="medico_id" id="" class="form-control">
-                      <option>---Seleccionar medico</option>
+                    <label>Medico Del Diagnostico</label>  
+                <select  name="medico"   required="" class="form-control">
+                       <option value="" >---Seleccionar medico</option>
                       @foreach($medicos as $medico)
-                      <option value="{{$medico['id']}}">{{$medico['nombre']}} {{$medico['apellido']}}    </option>
+                    
+                      <option value="{{$medico['id']}}">{{$medico['nombre']}} {{$medico['apellido']}}</option>
                     @endforeach
                     </select> 
                   </div>
-                   
+
+                
                     <div class="form-group">
-                    <label for="">Patologias</label>  
-                <select  name="p_id" id="" class="form-control">
-                      <option>---Seleccionar </option>
+                    <label  >Patologia</label>  
+                <select  name="patologia" required=""  class="form-control">
+                      <option value="">---Seleccionar patologia</option>
                       @foreach($pa as $p)
                       <option value="{{$p['id']}}">{{$p['nombre']}}</option>
                     @endforeach
                     </select> 
                   </div>
                   <div class="form-group">
-                    <label for="">Observaciones</label>
-                    <textarea class="form-control" name='observacion'  rows="3"></textarea>
+                    <label >Observaciones</label>
+                    <textarea class="form-control" required="" name='observacion'  rows="3"></textarea>
                   </div> 
                   <button type="subtmit" class=" btn btn-primary"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>
                 </form> 
@@ -98,14 +113,11 @@
 <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            @include('rol/fragment/info')
-          
               <table class="table table-hover table-striped">
                 <thead>
                   <tr style="background-color:#48C9B0">
    
-        
-                    <th width="20px">ID</th>
+         
                     <th>Paciente</th>
                      <th>Medico</th>
                      <th>Patologia</th>
@@ -119,21 +131,26 @@
                
                  
                  <tr>
-         @foreach($diagnosticos as $diagnostico)
-            <td>{{$diagnostico->id}}</td>
-               
-                <td>{{$diagnostico->paciente->persona->nombre}}   {{$diagnostico->paciente->persona->apellido1}}</td>
+                  @foreach($diagnosticos as $diagnostico)
+                 
+                 <td class="mailbox-messages mailbox-name" ><a style="display:block"><i class="fa fa-user"></i>&nbsp;&nbsp; {{$diagnostico->paciente->persona->nombre}}   {{$diagnostico->paciente->persona->apellido1}} </a></td>
+
+                 
                   <td>{{$diagnostico->medico->nombre}}  {{$diagnostico->medico->apellido}}</td>
              
              <td>{{$diagnostico->patologia->nombre}}</td>
                 <td>{{$diagnostico->observacion}}</td>
                 
                 <td width="10px">
-                  <a href="#"  class="btn btn-info ">Editar</a></td>
+                  <a href="{{route('diagnostico.edit', $diagnostico->id)}}"  class="btn btn-info btn-sm ">Editar</a></td>
 
-                <td width="10px">
-
-                  <a href="#"  class="btn btn-danger">Eliminar</a></td>
+                <td>
+                <form action="{{route('diagnostico.destroy', $diagnostico->id)}}" method="POST">
+                  {{csrf_field()}}
+                  <input type="hidden" name="_method"   value="DELETE">
+                  <button  class="btn btn-danger btn-sm">Eliminar</button>
+                </form>
+                 </td>
         
               </tr>
 

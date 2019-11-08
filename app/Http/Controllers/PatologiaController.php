@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Patologia;
+use App\Http\Requests\PatologiaRequest;
 class PatologiaController extends Controller
 {
     /**
@@ -33,7 +34,7 @@ class PatologiaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PatologiaRequest $request)
     {
           $Patologia=new Patologia;
         $Patologia->nombre= $request->nombre;
@@ -72,10 +73,16 @@ class PatologiaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PatologiaRequest $request, $id)
     {
-        //
+     $Patologia=Patologia::find($id);
+        $Patologia->nombre= $request->nombre;
+        $Patologia->descripcion=$request->descripcion;
+        $Patologia->save();
+
+        return back()->with('info','el registro se actualizo de manera exitosa');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -85,6 +92,8 @@ class PatologiaController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $patologia=Patologia::find($id);
+        $patologia->delete();
+        return back()->with('info', 'El registro de la patologia fue eliminada');
     }
 }

@@ -8,7 +8,11 @@ use App\Afiliacion;
 use App\Programacion_tratamiento;
 use App\Usuario;
 use App\Ingreso;
-
+use App\User;
+use Illuminate\Support\Facades\Auth;
+ 
+ use App\Http\Requests\IngresoRequest;
+ 
 
 class IngresoController extends Controller
 {
@@ -21,7 +25,8 @@ class IngresoController extends Controller
     {
 
     $programaciones=Programacion_tratamiento::orderBy('id','DESC')->paginate(6);
-      $afiliaciones=Afiliacion::orderBy('id','DESC')->paginate(6);
+    
+       $afiliaciones=Afiliacion::where("estado","=","activo")->orderBy('id','DESC')->paginate(5);
 
        return view('ingresos.index',compact('programaciones','afiliaciones') ); 
     }
@@ -42,16 +47,16 @@ class IngresoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IngresoRequest $request)
     {
 
         $ingreso=new Ingreso;
          $ingreso->usuario_id=$request->usuario_id;
-        $ingreso->paciente_id= $request->paciente_id;
-        $ingreso->monto_total=$request->monto_total;
-
+       $ingreso->paciente_id= $request->paciente_id;
+       $ingreso->afiliacion_id= $request->afiliacion_id;
+         $ingreso->monto_total=$request->monto;
         $ingreso->concepto=$request->concepto;
-  $ingreso->saldo=$request->saldo;
+        $ingreso->saldo=$request->saldo;
         $ingreso->descripcion=$request->descripcion;
         $ingreso->save();
         return back()->with('info','El registro de pago se guardado exitosamente');
@@ -66,20 +71,26 @@ class IngresoController extends Controller
      */
     public function show($id)
     {
-        $usuarios=Usuario::all();
+         $usuario=Auth::user();
       $programacion=Programacion_tratamiento::find($id);
-      return view('ingresos.recibo', compact('programacion','usuarios'));
-    }
+      $ingresos=Ingreso::where('paciente_id',$programacion->diagnostico->paciente_id)->orderBy('id','DESC')->paginate(3);
 
-    /**
-     * Show the form for editing the specified resource.
+      
+      return view('ingresos.recibo', compact('programacion','usuario','ingresos'));
+    }
+ /**
+     * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+ 
     public function edit($id)
     {
-        //
+      $usuario=Auth::user();
+      $afiliados=Afiliacion::find($id);
+      $ingresos=Ingreso::where('afiliacion_id',$id)->orderBy('id','DESC')->paginate(3);
+      return view('ingresos.recibofiliacion', compact('afiliados','ingresos','usuario'));
     }
 
     /**
@@ -102,15 +113,10 @@ class IngresoController extends Controller
      */
     public function destroy($id)
     {
-        //
+     $ingreso=Ingreso::find($id);
+     $ingreso->delete();
+     return back()->with('info', 'El registro de ingresos fue eliminado');
     }
 
-      public function buscar_pacientes($afiliacion,$dato='')
-    {
-$pacientes=Paciente($afiliacion,$dato)->ppaginate(8);
-$afiliaciones=Afiliacion::all();
-$afiliacionselec=$afiliaciones->find($afiliacion);
- return view('ingresos.index',compact('pacientes', 'afiliaciones', 'afiliacionselect') ); 
-
-    }
+  
 }

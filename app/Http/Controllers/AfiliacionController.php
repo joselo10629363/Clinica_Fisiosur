@@ -17,7 +17,7 @@ class AfiliacionController extends Controller
     public function index()
     {
     $usuario=Auth::user();
-     $f=Afiliacion::orderBy('id','DESC')->paginate(5);
+     $f=Afiliacion::orderBy('id','DESC')->paginate(7);
        return view('filiacion.index',compact('f','usuario') );  
         }
     

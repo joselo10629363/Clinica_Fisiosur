@@ -24,9 +24,8 @@ Route::get('admin', 'AdminController@index');
 Route::resource ('rol','RolController');
 Route::resource ('filiacion','AfiliacionController');
 Route::resource ('paciente','PacienteController');
-
-
 Route::resource ('usuario','UsuarioController');
+Route::resource ('reporte','ReporteAdminController');
 Route::get('enfermera', function () {
     return view('vistaenfermeria');});
 
@@ -47,3 +46,4 @@ Route::resource ('evolucion','EvolucionController');
 Route::resource ('egreso','EgresoController');
 Route::resource ('concepto','ConceptoController');
 Route::resource ('ingreso','ingresoController');
+Route::resource ('listar','ListarController');

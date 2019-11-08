@@ -19,7 +19,7 @@
           <div class="modal-body">
         
 
-        <form class="form-group"  method="POST" action="{{route('programacion.store')}}" enctype="multipart/form-data" >
+        <form class="form-group"  method="POST" autocomplete="off"  action="{{route('programacion.store')}}" enctype="multipart/form-data" >
             @csrf
 
    <div class="form-group">
@@ -34,15 +34,15 @@
         <label for="">Dias de tratamientos</label>
                 <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>
 
-    <select style="width:400px;" class="form-control" name="dia[]"  id="demoSelect" multiple="multiple">
+    <select style="width:400px;" class="form-control"  name="dia" required="" id="demoSelect" multiple="multiple">
                 <optgroup label="Selecionar dias">
-                  <option >Todos los dias</option>
-                  <option value="lunes" >Lunes</option>
-                  <option  value="martes">Martes</option>
-                  <option value="miercoles">Miercoles</option>
-                  <option value="jueves" >Jueves</option>
-                  <option value="viernes" >Viernes</option>
-                  <option value="sabado" >Sabado</option>
+                  <option value="todos">Todos los dias</option>
+                  <option value="Lunes" >Lunes</option>
+                  <option  value="Martes">Martes</option>
+                  <option value="Miercoles">Miercoles</option>
+                  <option value="Jueves" >Jueves</option>
+                  <option value="Viernes" >Viernes</option>
+                  <option value="Sabado" >Sabado</option>
                 </optgroup>
               </select>
                   </div></div>
@@ -59,12 +59,12 @@
   <span class="input-group-text" style=" height: 35px;/*startDM*/background-color: #222222 !important;color: #eeeeee !important;/*endDM*/;/*startDM*/background-color: #222222 !important;color: #eeeeee !important;/*endDM*/"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
 <span class="glyphicon glyphicon-time"></span>
 </span>
-<input type="text" class="form-control" name="horario" placeholder="Selecione hora" />
+<input type="text" class="form-control" name="horario" required=""  placeholder="Selecione hora" />
 </div>
 </div>
                  <div class="form-group">
                     <label for="">Estado del tratamiento</label>  
-                <select  name="estado" id="" class="form-control">
+                <select  name="estado"   class="form-control">
                       <option value="Activo">Activo  </option>
                       <option value="Inactivo">Desactivado</option>
                      

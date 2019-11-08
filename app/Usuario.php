@@ -17,6 +17,7 @@ class Usuario extends Model
 
         	return $this->belongsTo(Rol::class);
         }
+        
          public function persona()
         {
         	
@@ -25,5 +26,9 @@ class Usuario extends Model
          public function egreso()
         {
             return $this->hasMany(Egreso::class);
+        }
+         public function ingreso()
+        {
+            return $this->hasMany(Ingreso::class);
         }
 }

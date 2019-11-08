@@ -7,7 +7,8 @@ use App\Diagnostico;
 use App\Tratamiento;
 use App\Evolucion;
 use App\programacion_tratamiento;
-
+use Carbon\Carbon; 
+use App\Http\Requests\EvolucionRequest;
 class EvolucionController extends Controller
 {
     /**
@@ -15,14 +16,24 @@ class EvolucionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
-    {
-        
-   // $programaciones=programacion_tratamiento::where("estado","=","activo")->get()->orderBy('horario','ASC');
+    { 
+    // $fecha=date('l');
+   // $fecha=Carbon::now()->format('l');
+$dia = array(
+"Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado"
+);
+$fecha =$dia[date("w")];
 
-$programaciones= programacion_tratamiento::where('estado','activo')->orderBy('horario','ASC')->paginate(6);
+       
 
-       return view('evolucion.index',compact('programaciones') );   
+  //  $programaciones=programacion_tratamiento::where("estado","=","activo")->get()->orderBy('horario','ASC');
+
+$programaciones= programacion_tratamiento::where('estado','activo')->where('dia',$fecha)->orwhere('dia','todos')->orderBy('horario','ASC')->paginate(6);
+//$programaciones= programacion_tratamiento::where('estado','activo')->orderBy('horario','ASC')->paginate(6);
+
+       return view('evolucion.index',compact('programaciones'));   
        
     }
 
@@ -42,12 +53,12 @@ $programaciones= programacion_tratamiento::where('estado','activo')->orderBy('ho
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EvolucionRequest $request)
     {
         $evolucion=new Evolucion;
         $evolucion->diagnostico_id= $request->diagnostico_id;
         $evolucion->sesion=$request->sesion;
-        $evolucion->tratamiento_id=$request->t_id;
+        $evolucion->tratamiento_id=$request->tratamiento;
         $evolucion->observacion=$request->observacion;
         $evolucion->save();
         return back()->with('info','El registro de evolucion fue registrado correctamente');
@@ -62,8 +73,9 @@ $programaciones= programacion_tratamiento::where('estado','activo')->orderBy('ho
     public function show($id)
     { 
         $diagnostico=Diagnostico::find($id);
+        $evoluciones=Evolucion::where('diagnostico_id',$id)->orderBy('sesion','DESC')->paginate(3);
         $tratamientos=Tratamiento::all();
-       return view('evolucion.crear',compact('tratamientos','diagnostico') ); 
+       return view('evolucion.crear',compact('tratamientos','diagnostico','evoluciones') ); 
     
     }
 
@@ -85,9 +97,18 @@ $programaciones= programacion_tratamiento::where('estado','activo')->orderBy('ho
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EvolucionRequest $request, $id)
     {
-        //
+        
+        $evolucion=Evolucion::find($id);
+         $evolucion->diagnostico_id= $request->diagnostico_id;
+        $evolucion->sesion=$request->sesion;
+        $evolucion->tratamiento_id=$request->tratamiento;
+        $evolucion->observacion=$request->observacion;
+        $evolucion->save();
+        return back()->with('info','El registro de evolucion fue actualizado');
+
+          
     }
 
     /**
@@ -98,6 +119,8 @@ $programaciones= programacion_tratamiento::where('estado','activo')->orderBy('ho
      */
     public function destroy($id)
     {
-        //
+         $evolucion=Evolucion::find($id);
+        $evolucion->delete();
+        return back()->with('info', 'El registro fue eliminado de manera exitosa');
     }
 }

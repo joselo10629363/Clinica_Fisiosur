@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Tratamiento;
 use App\Diagnostico;
 use App\Programacion_tratamiento;
+use App\Http\Requests\ProgramacionRequest;
 class ProgramacionController extends Controller
 {
     /**
@@ -35,18 +36,13 @@ class ProgramacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProgramacionRequest  $request)
     {
-     
-    
         $programacion=new Programacion_tratamiento();
-         $programacion->fecha=$request->fecha;
-      
- 
-
-        $programacion->dia= $request->dia;
-         $programacion->horario=$request->horario;
-          $programacion->estado=$request->estado;
+        $programacion->fecha=$request->fecha;
+        $programacion->dia=$request->dia;
+        $programacion->horario=$request->horario;
+        $programacion->estado=$request->estado;
         $programacion->diagnostico_id=Diagnostico::get()->max('id');
         $programacion->save();
         return back()->with('info','Se realizo una nueva programacion de Tratamiento');
@@ -72,7 +68,12 @@ class ProgramacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+
+        $programacion=Programacion_tratamiento::find($id);
+     
+    
+    return view('programaciones.editar',compact('programacion') ); 
     }
 
     /**
@@ -82,9 +83,20 @@ class ProgramacionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProgramacionRequest $request, $id)
     {
-        //
+  
+
+        $programacion=Programacion_tratamiento::find($id);
+        $programacion->fecha=$request->fecha;
+        $programacion->dia=$request->dia;
+        $programacion->horario=$request->horario;
+                $programacion->estado=$request->estado;
+
+        $programacion->save();
+ 
+      return redirect()->route('evolucion.index')->with('info','El registro  se  actualizo correctamente ');
+
     }
 
     /**

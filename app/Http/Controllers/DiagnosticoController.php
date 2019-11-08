@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Diagnostico;
 use App\Tratamiento;
+use App\Patologia;
+use App\Medico;
+use App\Http\Requests\DiagnosticoRequest;
 class DiagnosticoController extends Controller
 {
     /**
@@ -33,12 +36,12 @@ class DiagnosticoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DiagnosticoRequest $request)
     {
         $diagnostico=new Diagnostico;
         $diagnostico->paciente_id= $request->paciente_id;
-        $diagnostico->medico_id=$request->medico_id;
-        $diagnostico->patologia_id=$request->p_id;
+        $diagnostico->medico_id=$request->medico;
+        $diagnostico->patologia_id=$request->patologia;
         $diagnostico->observacion=$request->observacion;
         $diagnostico->save();
         return back()->with('info','El diagnostico del paciente fue registrado correctamente');
@@ -74,7 +77,10 @@ class DiagnosticoController extends Controller
      */
     public function edit($id)
     {
-        //
+    $diagnostico=Diagnostico::find($id);
+     $medicos=Medico::all();
+     $patologias=Patologia::all();
+    return view('diagnostico.editar',compact('diagnostico','medicos','patologias') ); 
     }
 
     /**
@@ -84,9 +90,20 @@ class DiagnosticoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DiagnosticoRequest $request, $id)
     {
-        //
+            
+
+
+        $diagnostico=Diagnostico::find($id);
+        $diagnostico->medico_id=$request->medico;
+        $diagnostico->patologia_id=$request->patologia;
+        $diagnostico->observacion=$request->observacion;
+        $diagnostico->save();
+
+          return back()->with('info','El registro  se  actualizo correctamente ');
+
+       
     }
 
     /**
@@ -97,6 +114,8 @@ class DiagnosticoController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $d=Diagnostico::find($id);
+        $d->delete();
+        return back()->with('info', 'El diagnostico del paciente fue eliminado exitosamente');
     }
 }

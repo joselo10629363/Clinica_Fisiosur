@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Medico;
-
+use App\Http\Requests\MedicoRequest;
 class MedicoController extends Controller
 {
     /**
@@ -14,7 +14,10 @@ class MedicoController extends Controller
      */
     public function index()
     {
-        //
+
+$medicos=Medico::orderBy('id','DESC')->paginate(6);
+       return view('medico.index',compact('medicos') );
+
     }
 
     /**
@@ -33,16 +36,15 @@ class MedicoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MedicoRequest $request)
     {
       $medico=new Medico;
         $medico->nombre= $request->nombre;
         $medico->apellido=$request->apellido;
         $medico->matricula=$request->matricula;
-
         $medico->save();
 
-        return back()->with('info','Nueva Medico Guardado');
+        return back()->with('info','El registro  del medico fue exitosa');
     }
 
     /**
@@ -74,9 +76,15 @@ class MedicoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MedicoRequest $request, $id)
     {
-        //
+        $medico=Medico::find($id);
+        $medico->nombre= $request->nombre;
+        $medico->apellido=$request->apellido;
+        $medico->matricula=$request->matricula;
+        $medico->save();
+
+        return back()->with('info','El registro  del medico se modifico  exitosamente');
     }
 
     /**
@@ -87,6 +95,8 @@ class MedicoController extends Controller
      */
     public function destroy($id)
     {
-        //
+    $medico=Medico::find($id);
+        $medico->delete();
+        return back()->with('info', 'El registro del medico fue eliminada de manera exitosa');
     }
 }

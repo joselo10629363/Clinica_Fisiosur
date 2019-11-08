@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tratamiento;
-
+use App\Http\Requests\TratamientosRequest;
 class TratamientoController extends Controller
 {
     /**
@@ -33,7 +33,7 @@ class TratamientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-   public function store(Request $request)
+   public function store(TratamientosRequest $request)
     {
        $tratamiento=new Tratamiento;
         $tratamiento->nombre=$request->nombre;
@@ -71,9 +71,14 @@ class TratamientoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TratamientosRequest $request, $id)
     {
-        //
+    
+         $t=Tratamiento::find($id);
+        $t->nombre= $request->nombre;
+        $t->descripcion=$request->descripcion;
+        $t->save();
+        return back()->with('info', 'El tipo de tratamiento fue modificado');
     }
 
     /**
@@ -86,6 +91,6 @@ class TratamientoController extends Controller
     {
     $tratamientos=Tratamiento::find($id);
         $tratamientos->delete();
-        return back()->with('info', 'El tratamiento fue retirado');
+        return back()->with('info', 'El tipo de tratamiento  fue eliminado');
     }
 }

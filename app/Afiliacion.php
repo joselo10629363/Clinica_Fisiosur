@@ -13,6 +13,10 @@ class Afiliacion extends Model
         {
         	return $this->hasMany(Paciente::class);
         }
+        public function ingreso()
+        {
+        	return $this->hasMany(Ingreso::class);
+        }
 
 }
   

@@ -15,11 +15,25 @@
        <div class="row">
         <div class="col-md-12">
           <div class="tile">
+             @if ($errors->any())
+             <div  class="alert alert-danger">
+              <button type="button" class="close" data-dismiss="alert">
+                &times;
+              </button>
+               <ul>
+                 @foreach($errors->all() as $error)
+
+                 <li>{{$error}} </li>
+                 @endforeach
+               </ul>
+             </div>
+             @endif
+        
             @include('rol/fragment/info')
             <div class="row">
               <div class="col-lg-6">
                
-    <form class="form-group"  method="POST" action="{{route('usuario.store')}}" enctype="multipart/form-data" >
+    <form class="form-group"  method="POST" autocomplete="off" action="{{route('usuario.store')}}" enctype="multipart/form-data" >
 
                    @csrf
   <div class="form-group">
@@ -87,7 +101,7 @@
     
     <div class="form-group">
     <label for="">Contraseña</label>
-    <input type="password"  required="" placeholder="password" name="password" class="form-control">
+    <input type="password"  required="" placeholder="password maor a 6 caracteres" name="password" class="form-control">
     </div>
                   <button type="subtmit" class=" btn btn-primary pull-right"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>
                 </form> 
@@ -96,14 +110,13 @@
             <div class="tile-footer">
                
 
-            </div>
-            @include('rol/fragment/info')
+            </div> 
               <table class="table table-hover table-striped">
                 <thead>
                   <tr style="background-color:#5DADE2 ">
-                    <th width="20px">ID</th>
+                  <th>Usuario</th>
                     <th>Rol</th>
-                    <th>Usuario</th>
+                    <td>Telefono</td>
                     <th>Correo</th>
                  <th>Fechado</th>
                     <th colspan="3">&nbsp;</th>
@@ -112,11 +125,14 @@
                 <tbody>
                   @foreach($usuarios as $usuario)
                  <tr>
-                <td>{{$usuario->id }}</td>
-                <td>{{$usuario->rol->nombre}} </td>
-                <td>{{$usuario->persona->nombre}}   {{$usuario->persona->apellido1}} 
+               
+               
+                <td class="mailbox-messages mailbox-name" ><a style="display:block"><i class="fa fa-user"></i>&nbsp;&nbsp; 
+                  {{$usuario->persona->nombre}}   {{$usuario->persona->apellido1}} 
                  {{$usuario->persona->apellido2}}
                   </td>
+                   <td>{{$usuario->rol->nombre}} </td>
+                     <td>{{$usuario->persona->telefono}}</td>
                 <td>{{$usuario->email}}</td>
                   <td>{{$usuario->created_at}}</td>
                 <td width="10px"><a href="{{route('usuario.edit', $usuario->id)}}"  class="btn btn-warning btn-sm">Editar</a></td>

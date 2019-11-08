@@ -11,8 +11,8 @@
          @include('rol/fragment/info')
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">Programaciones</li>
-          <li class="breadcrumb-item"><a href="#">Registro Evolucion</a></li>
+          
+          <li class="breadcrumb-item"><a href="#">Registro de ingresos</a></li>
         </ul>
       </div>
       
@@ -50,7 +50,7 @@
 
                    
                
-                <td width="10px"><a href="{{route('ingreso.show', $programacion->id)}}"  class="btn btn-info btn-sm"><i class="fa fa-usd" aria-hidden="true"></i>Recibo</a></td>
+            <td width="10px"><a href="{{route('ingreso.show', $programacion->id)}}"  class="btn btn-info btn-sm"><i class="fa fa-usd" aria-hidden="true"></i>Recibo</a></td>
                  
                
               </tr>
@@ -76,6 +76,8 @@
                     <th>nombre</th>
                     
                     <th>Descripcion de la Institucion</th>
+
+                    <th>Estado</th>
                     <th colspan="2">&nbsp;</th>
                   </tr>
                 </thead>
@@ -84,18 +86,17 @@
                   <tr>
                     <td class="mailbox-messages mailbox-name" ><a style="display:block"><i class="fa fa-user"></i>&nbsp;&nbsp;<?= $afiliacion->nombre;  ?></a></td>
                    <td>{{$afiliacion->descripcion}}</td>
-                
+                 <td>{{$afiliacion->estado}}</td>
                  
-   <td width="10px"><a href="{{route('ingreso.show', $afiliacion->id)}}"  class="btn btn-info btn-sm"><i class="fa fa-usd" aria-hidden="true"></i>Recibo</a></td>
+   <td width="10px"><a href="{{route('ingreso.edit', $afiliacion->id)}}"  class="btn btn-info btn-sm"><i class="fa fa-usd" aria-hidden="true"></i>Recibo</a></td>
                   </tr>
                  @endforeach
                 </tbody>
                
               </table>
 
-
- {!!$afiliaciones->render()!!}
-
+ 
+         {!!$afiliaciones->render()!!}
 
 
             </div>

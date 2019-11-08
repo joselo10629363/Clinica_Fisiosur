@@ -10,6 +10,7 @@ use App\Diagnostico;
 use App\Afiliacion;
 use App\Tratamiento;
 use App\Patologia;
+use Carbon\Carbon; 
 class AtencionController extends Controller
 {
     /**
@@ -19,9 +20,15 @@ class AtencionController extends Controller
      */
     public function index()
     {
-    $pacientes=Paciente::orderBy('id','DESC')->paginate(8);
+
+    $hoy = Carbon::today();
+  
+
+ 
+ $pacientes=Paciente::whereDate('created_at',date('Y-m-d'))->orderBy('id','ASC')->paginate(7);
+
       $afiliacion=Afiliacion::all();
-       return view('medico.atencion', compact('afiliacion','pacientes')); 
+       return view('medico.atencion', compact('afiliacion','pacientes','hoy')); 
     }
 
     /**

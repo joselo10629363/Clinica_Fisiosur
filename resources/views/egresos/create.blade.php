@@ -9,11 +9,11 @@
          
           </div>
           <div class="modal-body">
-        <form class="form-group"  method="POST" action="{{route('concepto.store')}}" enctype="multipart/form-data" >
+        <form class="form-group"  method="POST" autocomplete="off" action="{{route('concepto.store')}}" enctype="multipart/form-data" >
             @csrf
   <div class="form-group">
     <label for="">Nombre</label>
-    <input  type="text"  required="" placeholder="Nombre" name="nombre" class="form-control">
+    <input  type="text"  required="" placeholder="Nombre" maxlength="30"  name="nombre" class="form-control">
     </div>
   
 
