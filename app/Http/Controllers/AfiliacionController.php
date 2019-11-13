@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Afiliacion;
-use App\User;
+
 use App\Http\Requests\AfiliacionRequest;
+
 class AfiliacionController extends Controller
 {
     /**
@@ -59,7 +60,7 @@ class AfiliacionController extends Controller
      */
     public function show($id)
     {
-        //
+ 
     }
 
     /**

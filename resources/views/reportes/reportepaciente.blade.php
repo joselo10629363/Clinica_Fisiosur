@@ -5,14 +5,28 @@
         <div>
           <h1><i class="fa fa-th-list"></i> Listado de todos los pacientes</h1>
           <p>Muestra de  todos los pacientes registrados  y distintas afiliaciones donde se puede buscar un registro especifico ingresando algun dato relacionado al paciente en la caja de busqueda en tiempo real</p>
-        </div>
+         </div>
+         
+          
+         
+        
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
           <li class="breadcrumb-item">Pacientes</li>
         </ul>
       </div>
+ 
+ <div class="modal-footer" style=" border-radius:8px; background-color:#A3E4D7">
+
+              @foreach($afiliaciones as $afiliacion)
+           
+
+     <a  href="{{route('generarpdf.show',$afiliacion->id)}}" class="btn btn-success"  > {{$afiliacion->nombre}}</a>
+ @endforeach
+                 </div>
       <div class="row">
         <div class="col-md-12">
+          
           <div class="tile">
             <div class="tile-body">
               <table class="table table-hover table-bordered" id="sampleTable">
@@ -47,7 +61,6 @@
                     <td  >
 
                   <a href=" {{route('reporte.show',$paciente->id)}}}"  class="btn btn-success btn-sm ">informe</a></td>
-
                 </tr>
                  @endforeach
                 </tbody>

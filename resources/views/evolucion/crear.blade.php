@@ -46,8 +46,7 @@
          @include('rol/fragment/info')
       <div class="modal-footer" style=" border-radius:8px; background-color:#A3E4D7">
 
-                 
-        <a class="btn btn-success  "data-toggle="modal" data-target="#creart"><i class="fa fa-plus"></i>Tipo de Tratamiento</a>
+      <a class="btn btn-success  "data-toggle="modal" data-target="#creart"><i class="fa fa-plus"></i>Tipo de Tratamiento</a>
                  </div>
                   
       <div class="row">
@@ -97,7 +96,7 @@
            
           </div>
         </div>
-
+  @include('tratamiento.crear')
 
         <div class="col-md-6">
           <div class="tile">
@@ -133,7 +132,7 @@
                   <a href="#" class="btn  pull-right"data-toggle="modal" data-target="#edit{{$evolucion->id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
 
-               <div class="modal fade" id="edit{{$evolucion->id}}">
+     <div class="modal fade" id="edit{{$evolucion->id}}">
       <div class="modal-dialog">
         <div class="modal-content" >
           <div class="modal-header" style="background-color:#73C6B6">
@@ -207,7 +206,7 @@
             </div>
           </div>
         </div>
-         @include('tratamiento.crear')
+        
       </div>
     </main>
     @stop

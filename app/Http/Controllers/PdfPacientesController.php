@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
- use App\Paciente;
- use App\Diagnostico;
-  use App\Evolucion;
-   use App\Afiliacion;
-class ReporteAdminController extends Controller
+   use Barryvdh\DomPDF\Facade as PDF; 
+    use App\paciente;
+use App\Afiliacion;
+use Carbon\Carbon; 
+class PdfPacientesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,7 @@ class ReporteAdminController extends Controller
      */
     public function index()
     {
- 
-         $pacientes=Paciente::all();
- $afiliaciones=Afiliacion::all();
-       return view('reportes.reportepaciente', compact('pacientes','afiliaciones'));  
+        //
     }
 
     /**
@@ -51,18 +48,13 @@ class ReporteAdminController extends Controller
      */
     public function show($id)
     {
- $patologias= Diagnostico::where('paciente_id',$id)->get();
-$diagnostico = '';
- foreach($patologias as $patologia){
-          $diagnostico.= "{$patologia->id} ";
-       }     
+         $hoy = Carbon::today();
+     $afiliacion=Afiliacion::find($id);
+$pacientes=Paciente::where("afiliacion_id","=",$id)->get();
+$listado=PDF::loadView('pdf.pdfpacientes',compact('pacientes','afiliacion','hoy'));
+ return $listado->stream();
 
 
- $evoluciones= Evolucion::where('diagnostico_id',$diagnostico)->get();
- $pacientes=Paciente::find($id);
-  
-
-      return view('reportes.informepacientes', compact('pacientes','patologias','evoluciones' ));
     }
 
     /**
@@ -73,10 +65,7 @@ $diagnostico = '';
      */
     public function edit($id)
     {
-        
- $evoluciones=Evolucion::where('diagnostico_id',$id)->get();
- 
-  return view('reportes.evolucion', compact('evoluciones'));
+        //
     }
 
     /**
@@ -86,9 +75,9 @@ $diagnostico = '';
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update( $id)
+    public function update(Request $request, $id)
     {
-    
+        //
     }
 
     /**
@@ -99,6 +88,6 @@ $diagnostico = '';
      */
     public function destroy($id)
     {
-      return($id);
+        //
     }
 }
