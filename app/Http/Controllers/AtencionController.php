@@ -25,10 +25,10 @@ class AtencionController extends Controller
   
 
  
- $pacientes=Paciente::whereDate('created_at',date('Y-m-d'))->orderBy('id','ASC')->paginate(7);
+ $pacientes=Paciente::all();
 
       $afiliacion=Afiliacion::all();
-       return view('medico.atencion', compact('afiliacion','pacientes','hoy')); 
+       return view('medico.atencion', compact('afiliacion','pacientes' )); 
     }
 
     /**

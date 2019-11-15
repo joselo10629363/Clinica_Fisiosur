@@ -15,77 +15,45 @@
        <div class="row">
         <div class="col-md-12">
           <div class="tile">
-            @include('rol/fragment/info')
-            <div class="row">
-              <div class="col-lg-6">
-               
-    
-              </div>
-            </div>
-           
-            @include('rol/fragment/info')
-              <table class="table table-hover table-striped">
+            
+            <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
-                  <tr style=" background-color: #48C9B0">
-                 
-                    
+                  <tr>
+                  
                     <th>Paciente</th>
-                     <th>Afiliacion</th>
-                    <th>C.i.</th>
+                    <th>Afiliacion</th>
+                    <th>Cedula</th>
+                    <th>Domicilio</th>
                     <th>Ocupacion</th>
-                    <th>Observacion</th>
-                    <th colspan="3">&nbsp;</th>
+                    <th>Fecha ingreso</th>
+                     <th> Accion</th>
+                    
                   </tr>
                 </thead>
                 <tbody>
-               
+                  
                   @foreach($pacientes as $paciente)
                  <tr>
               
-       <td class="mailbox-messages mailbox-name" ><a style="display:block"><i class="fa fa-user"></i>&nbsp;&nbsp; {{$paciente->persona->nombre }}  {{ $paciente->persona-> apellido1 }} {{$paciente->persona->apellido2}}</td>
-                 
-                 <td>{{$paciente->afiliacion->nombre}}</td>
-
+              
+                <td class="mailbox-messages mailbox-name" ><a style="display:block"><i class="fa fa-user"></i>&nbsp;&nbsp;{{$paciente->persona->nombre }} {{$paciente->persona-> apellido1}} {{$paciente->persona-> apellido2}}</td>
+                  <td>{{$paciente->afiliacion->nombre}}</td>
                   <td>{{$paciente->persona->cedula}}</td>
+                  
+                  <td>{{$paciente->persona->domicilio}}</td>
                 <td>{{$paciente->ocupacion}}</td>
-                <td>{{$paciente->descripcion}}</td>
-                
-                
+           
+                <td>{{$paciente->created_at}}</td>
 
-                <td width="10px">
+                    <td  >
 
-                  <a href="{{route('atencion.show', $paciente->id)}}"  class="btn btn-success ">Atender</a></td>
-        
- 
-
-        <td>
-
-
-         <div class="col-md-6">
-                <div class="toggle-flip">
-                  <label>
-                    <input type="checkbox"><span class="flip-indecator" data-toggle-on="Atender" data-toggle-off="Atendido"></span>
-                  </label>
-                </div>
-            
-              </div>
-
-        </td>
-
-              </tr>
-
- 
-
-
-                  @endforeach
-
-
-
-
+                 <a href="{{route('atencion.show', $paciente->id)}}"  class="btn btn-success btn-sm ">Atender</a></td>
+                </tr>
+                 @endforeach
                 </tbody>
-
-              </table> 
-               {!!$pacientes->render()!!}
+                     
+              </table>
+               
           </div>
         </div>
  
@@ -96,7 +64,10 @@
 
 
  
- 
+  
+        
 </body>
- 
+   <script type="text/javascript" src="{{url('/')}}/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="{{url('/')}}/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
 @stop 

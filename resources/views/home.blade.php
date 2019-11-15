@@ -244,7 +244,7 @@
                <tr>
                 @foreach($programaciones as $programacion)
               
-                <td>{{$programacion->diagnostico->patologia->nombre}}</td>
+                
                 <td>{{$programacion->diagnostico->paciente->persona->nombre}}
                  {{$programacion->diagnostico->paciente->persona->apellido1}} {{$programacion->diagnostico->paciente->persona->apellido2}}</td>
                  <td>{{$programacion->fecha}}</td>

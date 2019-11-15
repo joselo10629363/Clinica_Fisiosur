@@ -16,13 +16,14 @@
     </section>
     <section class="login-content">
       <div class="logo">
+        @include('rol/fragment/info')
         <h1>Clinica Fisiosur</h1>
  
       </div>
       <div class="login-box">
         <form class="login-form" method="post"  action="/login" >
-          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>INICIA SESION</h3>
-          @include('rol/fragment/info')
+          <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>INICIAR SESION</h3>
+          
           <div class="form-group">
             @csrf
             <label class="control-label">Email</label>

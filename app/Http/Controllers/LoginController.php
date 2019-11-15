@@ -48,12 +48,12 @@ $programaciones= programacion_tratamiento::where('estado','activo')->where('dia'
 
           if ($usuario->esAdmin()) {
       
-            return view('home', compact( 'paciente','tratamiento','afiliacion','programacion','medico','ingresos','egresos','usuarios','programaciones'));
+            return view('home', compact( 'paciente','tratamiento','afiliacion','programacion','medico','ingresos','egresos','usuarios','programaciones' ));
 
 
           }else
           {
-               return view('vistamedico', compact('usuario'));
+               return view('vistamedico', compact('usuarios','paciente','programacion','medico','programaciones'));
           }
        
     }

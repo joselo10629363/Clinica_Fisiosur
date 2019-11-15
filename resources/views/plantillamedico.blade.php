@@ -76,7 +76,8 @@
 
       </ul>
     </aside>
-    
+     
+   
 
     <!-- Essential javascripts for application to work-->
     <script src="{{url('/')}}/js/jquery-3.2.1.min.js"></script>
