@@ -21,6 +21,5 @@ public function diagnostico(){
        return $this->hasMany(Ingreso::class);
         }
 
-        
-        
+       
 }

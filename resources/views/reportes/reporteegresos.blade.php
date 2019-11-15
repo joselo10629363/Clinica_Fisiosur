@@ -3,8 +3,8 @@
 <main class="app-content">
       <div class="app-title">
         <div>
-          <h1><i class="fa fa-th-list"></i> Listado de todos los pacientes</h1>
-          <p>Muestra de  todos los pacientes registrados  y distintas afiliaciones donde se puede buscar un registro especifico ingresando algun dato relacionado al paciente en la caja de busqueda en tiempo real</p>
+          <h1><i class="fa fa-th-list"></i> Listado general de los egresos  </h1>
+          <p>Muestra de  todos los egresos realizados y registrados  de  la clinica Fisiosur</p>
          </div>
          
           
@@ -12,17 +12,18 @@
         
         <ul class="app-breadcrumb breadcrumb side">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">Pacientes</li>
+          <li class="breadcrumb-item">Reporte egresos</li>
         </ul>
       </div>
  
  <div class="modal-footer" style=" border-radius:8px; background-color:#1F618D">
 
-              @foreach($afiliaciones as $afiliacion)
-           
+               
+           <h5>Generar Pdf</h5>
 
-     <a  href="{{route('generarpdf.show',$afiliacion->id)}}" class="btn btn-warning btn-sm"  ><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  {{$afiliacion->nombre}}</a>
- @endforeach
+     <a  href="# " class="btn btn-warning btn-sm"  ><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Mes</a>
+     <a  href=" #" class="btn btn-warning btn-sm  "  ><i class="fa fa-file-pdf-o" aria-hidden="true"></i> todo</a>
+ 
                  </div>
       <div class="row">
         <div class="col-md-12">
@@ -33,34 +34,31 @@
                 <thead>
                   <tr>
                   
-                    <th>Paciente</th>
-                    <th>Afiliacion</th>
-                    <th>Cedula</th>
-                    <th>Domicilio</th>
-                    <th>Ocupacion</th>
-                    <th>Fecha ingreso</th>
-                     <th> Accion</th>
+                    <th>Usuario</th>
+                    <th>Concepto</th>
+                 
+                    <th>Total Bs</th>
+                     
+                    <th>Fecha Registro  </th>
+             
                     
                   </tr>
                 </thead>
                 <tbody>
                   
-                  @foreach($pacientes as $paciente)
+                  @foreach($egresos as $egreso)
                  <tr>
-              
-              
-                <td>{{$paciente->persona->nombre }} {{$paciente->persona-> apellido1}} {{$paciente->persona-> apellido2}}</td>
-                  <td>{{$paciente->afiliacion->nombre}}</td>
-                  <td>{{$paciente->persona->cedula}}</td>
+                <td>{{$egreso->usuario->persona->nombre }} {{$egreso->usuario->persona->apellido1}} {{$egreso->usuario->persona->apellido2}}</td>
+                
+ 
+                  <td>{{$egreso->concepto->nombre}}</td>   
+                  <td>{{$egreso->monto_total}}</td>
+
                   
-                  <td>{{$paciente->persona->domicilio}}</td>
-                <td>{{$paciente->ocupacion}}</td>
-           
-                <td>{{$paciente->created_at}}</td>
-
-                    <td  >
-
-                  <a href=" {{route('reporte.show',$paciente->id)}}}"  class="btn btn-success btn-sm ">informe</a></td>
+                  
+              
+                 <td>{{$egreso->created_at}}</td>
+                
                 </tr>
                  @endforeach
                 </tbody>

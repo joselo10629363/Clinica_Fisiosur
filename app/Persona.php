@@ -17,7 +17,10 @@ class Persona extends Model
         {
         	return $this->hasMany(Paciente::class);
         }
-        
 
+        public function afiliacion(){
+       return $this->belongsTo(Afiliacion::class);
+        }
+   
 }
   

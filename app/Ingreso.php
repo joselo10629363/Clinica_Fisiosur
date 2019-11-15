@@ -15,10 +15,23 @@ protected $table = 'ingresos';
         	
         	return $this->belongsTo(Usuario::class);
         }
+
+
          public function paciente(){
        return $this->belongsTo(Paciente::class);
         }
+
+
  public function afiliacion(){
        return $this->belongsTo(Afiliacion::class);
         }
+
+
+
+        
+ 
+
+
+
+
 }

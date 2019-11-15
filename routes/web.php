@@ -27,7 +27,8 @@ Route::resource ('paciente','PacienteController');
 Route::resource ('usuario','UsuarioController');
 Route::resource ('reporte','ReporteAdminController');
 Route::resource ('generarpdf','PdfPacientesController');
-
+Route::resource ('ingresospdf','PdfIngresosController');
+Route::resource ('egresospdf','PdfEgresosController');
 Route::get('enfermera', function () {
     return view('vistaenfermeria');});
 

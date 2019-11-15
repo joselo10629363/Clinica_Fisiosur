@@ -80,7 +80,7 @@
          <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-database" aria-hidden="true"></i><span class="app-menu__label">Reportes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{{route('reporte.index')}}"><i class="icon fa fa-circle-o"></i>Pacientes</a></li>
-            <li><a class="treeview-item" href="form-custom.html"><i class="icon fa fa-circle-o"></i> Ingresos  </a></li>
+            <li><a class="treeview-item" href="{{route('ingresospdf.index')}}"><i class="icon fa fa-circle-o"></i> Ingresos  </a></li>
             <li><a class="treeview-item" href="paciente.html"><i class="icon fa fa-circle-o"></i> Egresos</a></li>
             
           </ul>
