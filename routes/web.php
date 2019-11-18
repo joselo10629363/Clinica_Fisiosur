@@ -29,11 +29,12 @@ Route::resource ('reporte','ReporteAdminController');
 Route::resource ('generarpdf','PdfPacientesController');
 Route::resource ('ingresospdf','PdfIngresosController');
 Route::resource ('egresospdf','PdfEgresosController');
+
 Route::get('enfermera', function () {
     return view('vistaenfermeria');});
 
-
-
+Route::resource ('enfermeria','EnfermeriaController');
+ Route::resource ('listarpacientes','ListarpacientesController');
 
 ////////////////////
 Route::get('medico', function () {
@@ -43,6 +44,7 @@ Route::resource ('medicos','MedicoController');
 Route::resource ('atencion','AtencionController');
 Route::resource ('tratamiento','TratamientoController');
 Route::resource ('diagnostico','DiagnosticoController');
+
 Route::resource ('programacion','ProgramacionController');
 Route::resource ('patologia','PatologiaController');
 Route::resource ('evolucion','EvolucionController');

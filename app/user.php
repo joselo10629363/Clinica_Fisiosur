@@ -28,8 +28,22 @@ class User extends Authenticatable
 
                 return true;
             }
-            return false;
+             
         }
+        public function esMedico()
+        {
+
+            if ($this->rol->nombre=='Medico'){
+                
+
+                return true;
+            }
+
+                return false;
+             
+        }
+
+
         
 
     /**

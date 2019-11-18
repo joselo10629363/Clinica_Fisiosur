@@ -33,6 +33,7 @@ $fecha =$dia[date("w")];
 
  
 $programaciones= programacion_tratamiento::where('estado','activo')->where('dia',$fecha)->orwhere('dia','todos')->orderBy('horario','ASC')->paginate(6);
+$atender= programacion_tratamiento::where('estado','activo')->where('dia',$fecha)->orwhere('dia','todos')->count();
  
          $usuario=Auth::user();
          
@@ -48,12 +49,22 @@ $programaciones= programacion_tratamiento::where('estado','activo')->where('dia'
 
           if ($usuario->esAdmin()) {
       
-            return view('home', compact( 'paciente','tratamiento','afiliacion','programacion','medico','ingresos','egresos','usuarios','programaciones' ));
+            return view('home', compact( 'paciente','tratamiento','afiliacion','programacion','medico','ingresos','egresos','usuarios','programaciones','atender','fecha' ));
 
 
           }else
+
           {
-               return view('vistamedico', compact('usuarios','paciente','programacion','medico','programaciones'));
+            if ($usuario->esMedico()) {
+      
+             
+              return view('vistamedico', compact('usuarios','paciente','programacion','medico','programaciones','atender','fecha'));
+
+          }else{
+         return view('vistaenfermeria', compact('programaciones','paciente','programacion','medico','atender','fecha'));
+
+          }
+               
           }
        
     }

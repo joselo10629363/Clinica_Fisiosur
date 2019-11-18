@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="{{url('/')}}/css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
-   <header class="app-header"><a style="   font-size: 40px "  class="app-header__logo" href="#">C. Fisiosur</a>
+    <header class="app-header"><a class="app-header__logo" href="index.html">Fisiosur</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -50,7 +50,7 @@
     <!-- Sidebar menu-->
     <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
-      <div class="app-sidebar__user"><img width="65px" height="65px" class="app-sidebar__user-avatar" src="imagenes/img/doctor-thumb-10.jpg" alt="User Image">
+      <div class="app-sidebar__user"><img width="65px" height="65px" class="app-sidebar__user-avatar" src="{{url('/')}}/imagenes/img/doctor-thumb-10.jpg" alt="User Image">
         <div>
                 
             <p class="app-sidebar__user-name">{{auth()->user()->persona->nombre}}</p>
@@ -61,7 +61,7 @@
       <ul class="app-menu">
          <li class="app-menu__item "style="background-color:#1F618D"   class="header">NAVEGACION PRINCIPAL</li>
            
-         <li><a class="app-menu__item " href="{{route('listarpacientes.index')}}"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pacientes</span></a></li>
+        <li><a class="app-menu__item " href="#"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pacientes</span></a></li>
         
  
 
@@ -75,135 +75,21 @@
 
       </ul>
     </aside>
- 
+   
      
-
-    <main class="app-content">
-      <div class="app-title">
-        <div>
-          <h1><i class="fa fa-dashboard"></i> Vista principal de Enfermeria</h1>
-          <p>Muestra resumida  de los registros en la clinica Fisiosur</p>
-        </div>
-        <ul class="app-breadcrumb breadcrumb">
-          <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-        </ul>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-lg-3">
-          <div class="widget-small primary coloured-icon"><i class="icon fa fa-users fa-3x"></i>
-            <div class="info">
-              <h4>Pacientes</h4>
-              <p><i class="fa fa-check-circle-o" aria-hidden="true"></i><b> {{$paciente}}</b></p>
-            </div>
-          </div>
-        </div>
-
-         <div class="col-md-6 col-lg-3">
-          <div class="widget-small danger coloured-icon"><i class="icon fa fa-heartbeat fa-3x"></i>
-            <div class="info">
-              <h4>Tratamientos en curso</h4> 
-              <p><i class="fa fa-check-circle-o" aria-hidden="true"></i><b> {{$programacion}}</b></p>
-            </div>
-          </div>
-        </div>
-
-
-
-
-<div class="col-md-6 col-lg-3">
-          <div class="widget-small info coloured-icon"><i class=" icon fa fa-user-md fa-3x"></i>
-            <div class="info">
-              <h4>Medicos</h4>
-              <p><i class="fa fa-check-circle-o" aria-hidden="true"></i><b> {{$medico}}</b></p>
-            </div>
-          </div>
-        </div>
-
-
-<div class="col-md-6 col-lg-3">
-          <div class="widget-small warning coloured-icon"><i class=" icon fa fa-wheelchair-alt fa-3x"></i>
-            <div class="info">
-              <h4>{{$fecha}}</h4>
-              <p><i class="fa fa-check-circle-o" aria-hidden="true"></i><b> {{$atender}} Pacientes</b></p>
-            </div>
-          </div>
-        </div>
-
   
-         
-
-            
-        
-         
-      </div>
-       
-      <div class="row">
-        <div class="col-md-10">
-          <div class="tile">
-            <h3 class="tile-title">Atenciones para hoy</h3>
-             
-              <table class="table table-hover table-striped">
-                <thead>
-                  <tr style="background-color:#1F618D">
-  
-                   
-                    <th>Patologia</th>
-                    <th>Paciente</th>
-                     <th>Fecha</th>
-                     <th>Horario</th>
-                    <th>Dia</th>
-                      <th>Estado</th>
-                   
-                    <th colspan="3">&nbsp;</th>
-                  </tr>
-                </thead>
-                <tbody>  
-               <tr>
-                @foreach($programaciones as $programacion)
-              
-                <td>{{$programacion->diagnostico->patologia->nombre}}</td>
-                <td>{{$programacion->diagnostico->paciente->persona->nombre}}
-                 {{$programacion->diagnostico->paciente->persona->apellido1}} {{$programacion->diagnostico->paciente->persona->apellido2}}</td>
-                 <td>{{$programacion->fecha}}</td>
-                  <td>{{$programacion->horario}}</td>
-                   <td>{{$programacion->dia}}</td>
-                    <td>{{$programacion->estado}}</td>
-                 
-                   </tr>
-
-                  @endforeach
-                </tbody>
-
-              </table> 
-               
-                {!!$programaciones->render()!!}
-            
-          </div>
-        </div>
-        <div class="col-md-2">
-          <div class="tile">
-            <h5  >Agenda para hoy </h5>
-             <h3 class="tile-title" style="color:blue;"> {{$fecha}}</h3>
-             <h4 >{{$atender}}</h4>
-              <p>Pacientes</p>
-
-          </div>
-        </div>
-      </div>
-    </main>
 
   
     <!-- Essential javascripts for application to work-->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{url('/')}}/js/jquery-3.2.1.min.js"></script>
+    <script src="{{url('/')}}/js/popper.min.js"></script>
+    <script src="{{url('/')}}/js/bootstrap.min.js"></script>
+    <script src="{{url('/')}}/js/main.js"></script>
 
-
+ @yield('enfermeria')
 
     <!-- The javascript plugin to display page loading on top-->
-    <script src="js/plugins/pace.min.js"></script>
+    <script src=" {{url('/')}}/js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
     <script type="text/javascript" src="js/plugins/chart.js"></script>
     <script type="text/javascript">

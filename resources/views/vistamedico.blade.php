@@ -11,8 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body class="app sidebar-mini rtl">
-    <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="index.html">Fisiosur</a>
+   <header class="app-header"><a style="   font-size: 40px "  class="app-header__logo" href="#">C. Fisiosur</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -110,7 +109,7 @@
 
 
 <div class="col-md-6 col-lg-3">
-          <div class="widget-small info coloured-icon"><i class=" icon fa fa-user-md fa-3x"></i>
+          <div class="widget-small warning coloured-icon"><i class=" icon fa fa-user-md fa-3x"></i>
             <div class="info">
               <h4>Medicos</h4>
               <p><i class="fa fa-check-circle-o" aria-hidden="true"></i><b>{{$medico}}</b></p>
@@ -119,7 +118,15 @@
         </div>
 
   
-         
+         <div class="col-md-6 col-lg-3">
+          <div class="widget-small info coloured-icon"><i class=" icon fa fa-wheelchair-alt fa-3x"></i>
+            <div class="info">
+              <h4>{{$fecha}}</h4>
+              <p><i class="fa fa-check-circle-o" aria-hidden="true"></i><b> {{$atender}} Pacientes</b></p>
+            </div>
+          </div>
+        </div>
+
 
             
         
@@ -151,13 +158,13 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-10">
           <div class="tile">
             <h3 class="tile-title">Atenciones para hoy</h3>
              
               <table class="table table-hover table-striped">
                 <thead>
-                  <tr style="background-color:#48C9B0">
+                  <tr style="background-color:#5DADE2">
   
                    
                     <th>Patologia</th>
@@ -193,7 +200,7 @@
             
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-2">
           <div class="tile">
             <h3 class="tile-title"> Medicos</h3>
              
