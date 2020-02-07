@@ -34,7 +34,7 @@
               <div class="col-lg-12">
              <div class="modal-footer" style=" border-radius:8px; background-color:#A3E4D7">
 
-              <h3 style="padding-right: 300px">Editar Programacion para Tratamiento</h3>
+              <h3 style="padding-right: 300px">Editar Programacion de Tratamiento</h3>
            </div>
            <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 

@@ -25,7 +25,7 @@ class AfiliacionRequest extends FormRequest
     {
         return [
 
-            'nombre'=>'required|max:20',
+            'nombre'=>'required|alpha|max:20',
             'estado'=>'required|max:8',
             'descripcion'=>'required|max:255',
             

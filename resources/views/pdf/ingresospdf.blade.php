@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>REPORTE DE PACIENTES</title>
+    <title>REPORTE DE INGRESOS</title>
     <style type="text/css">
     body{
         font-size: 16px;
@@ -84,15 +84,10 @@
     <div class=" ">
 
         <table width="20%" align="right">
-                        <tr>
-                             
-      
-                <td height="15"   align="center" class="border"><span class="h3">Inst.:{{$afiliacion->nombre}}   </span></td>
-                
-                        </tr>
+                        
                          
                         <tr>
-                            <td height="15"  align="center" class="border"> Nº-000<span class="text"> </span></td>
+                            <td height="15"    class="border"> Nº 000<span class="text"> </span></td>
                         </tr>
                          
                     </table>
@@ -105,7 +100,7 @@
                 </td>
             </tr>
             <tr>
-                <td align="center">REPORTE DE PACIENTES - CLINICA FISIOSUR</td>
+                <td align="center">REPORTE DE INGRESOS - CLINICA FISIOSUR</td>
             </tr>
             <tr>
             	
@@ -145,39 +140,46 @@
 <thead>
             <tr >
                 <td  align="center" class="fondo"><strong>ID</strong></td>
-                <td align="center" class="fondo"><strong>PACIENTE</strong></td>
-                <td align="center" class="fondo"><strong>CEDULA </strong></td>
-                <td align="center" class="fondo"><strong>DOMICILIO</strong></td>
-                <td align="center" class="fondo"><strong>OCUPACION</strong></td>
+                <td align="center" class="fondo"><strong>USUARIO</strong></td>
+                <td align="center" class="fondo"><strong>CONCEPTO </strong></td>
+                 <td align="center" class="fondo"><strong>SALDO </strong></td>
                 <td align="center" class="fondo"><strong>FECHA</strong></td>
+                <td align="center" class="fondo"><strong>MONTO Bs</strong></td>
             </tr>
 
         </thead>
         
-         
+         @int=0;
            <tbody>
-                  
-                  @foreach($pacientes as $paciente)
+                   @foreach($ingresos as $egreso)
                  <tr>
-           <td>{{$paciente->id}}</td>
-                <td>{{$paciente->persona->nombre }} {{$paciente->persona-> apellido1}} {{$paciente->persona-> apellido2}}</td>
-               
-                  <td>{{$paciente->persona->cedula}}</td>
+                <td>{{$egreso->id}}</td>
+                <td>{{$egreso->usuario->persona->nombre }} {{$egreso->usuario->persona->apellido1}} {{$egreso->usuario->persona->apellido2}}</td>
+                
+ 
+                  <td>{{$egreso->concepto}}</td>   
+                  <td>{{$egreso->saldo}}</td>
+                <td align="center">{!! \Carbon\Carbon::parse($egreso->fecha)->format('d-m-Y') !!}</td>
+
+
+                <td align="center">{{$egreso->monto_total}}</td>
+                
                   
-                  <td>{{$paciente->persona->domicilio}}</td>
-                <td>{{$paciente->ocupacion}}</td>
-           
-                <td>{!! \Carbon\Carbon::parse($paciente->fecha)->format('d-m-Y') !!} </td>
-
-           
-
                 </tr>
                  @endforeach
                 </tbody>
-          
-              
+        
+              <tr>
+                <td style="border:0;">&nbsp;</td>
+                <td style="border:0;">&nbsp;</td>
+                <td style="border:0;">&nbsp;</td>
+                <td style="border:0;">&nbsp;</td>
+                <td align="right"><strong>TOTAL Bs</strong></td>
+                <td align="center"><span class="text"> {{$suma}}</span></td>
+                
+            </tr>
         </table>
-          
+            
           <br></br>
        <p align="center">_____________________________</p>
     </div>

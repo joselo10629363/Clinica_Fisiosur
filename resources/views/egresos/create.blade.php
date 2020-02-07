@@ -1,8 +1,8 @@
  <div class="modal fade" id="create">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div  class="modal-header" style=" background-color: #48C9B0" >
-             <h1>Registro de concepto de egreso</h1>
+          <div  class="modal-header" style=" background-color: #3D8B7D" >
+             <h3>Registro concepto de egreso</h3>
             <button class="btn btn-danger btn-sm" type="button" class="close" data-dismiss="modal">
               <span>&times;</span>
             </button>
@@ -13,7 +13,7 @@
             @csrf
   <div class="form-group">
     <label for="">Nombre</label>
-    <input  type="text"  required="" placeholder="Nombre" maxlength="30"  name="nombre" class="form-control">
+    <input  type="text"  required="" placeholder="Nombre" maxlength="20"  name="nombre" class="form-control">
     </div>
   
 

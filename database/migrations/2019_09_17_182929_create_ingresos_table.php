@@ -23,7 +23,9 @@ class CreateIngresosTable extends Migration
              $table->string('concepto',50);
             $table->string('saldo',10);
             $table->string('descripcion',255);
-            $table->timestamps();
+            $table->string('estado',10);
+            $table->date('fecha');
+
             $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('paciente_id')->references('id')->on('paciente')->onDelete('cascade')->onUpdate('cascade');
 

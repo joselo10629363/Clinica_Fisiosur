@@ -6,7 +6,7 @@
        <div class="clearix"></div>
         <div class="col-md-12">
           <div class="tile">
-            <h3 class="tile-title">LISTADO DE TODOS LOS AFILIADOS</h3>
+            <h3 class="tile-title">LISTADO DE   AFILIADOS</h3>
 
              @if ($errors->any())
              <div  class="alert alert-danger">
@@ -95,7 +95,7 @@
                 <form action="{{route('filiacion.destroy', $filia->id)}}" method="POST">
                   {{csrf_field()}}
                   <input type="hidden" name="_method"   value="DELETE">
-                  <button  class="btn btn-danger btn-sm">Eliminar</button>
+                  <button  class="btn btn-danger btn-sm" onclick="return confirm('No deberias de eliminar  el afiliado.Estas seguro de eliminar?')">Eliminar</button>
                 </form>
                  </td>
               </tr>

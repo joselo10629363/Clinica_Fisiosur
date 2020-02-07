@@ -10,7 +10,7 @@ use App\Usuario;
 use App\Ingreso;
 use App\User;
 use Illuminate\Support\Facades\Auth;
- 
+ use Carbon\Carbon; 
  use App\Http\Requests\IngresoRequest;
  
 
@@ -24,7 +24,7 @@ class IngresoController extends Controller
     public function index()
     {
 
-    $programaciones=Programacion_tratamiento::orderBy('id','DESC')->paginate(6);
+    $programaciones=Programacion_tratamiento::where("estado","=","activo")->orderBy('id','DESC')->paginate(6);
     
        $afiliaciones=Afiliacion::where("estado","=","activo")->orderBy('id','DESC')->paginate(5);
 
@@ -50,6 +50,8 @@ class IngresoController extends Controller
     public function store(IngresoRequest $request)
     {
 
+         $anu=Carbon::now()->format('Y-m-d');
+
         $ingreso=new Ingreso;
          $ingreso->usuario_id=$request->usuario_id;
        $ingreso->paciente_id= $request->paciente_id;
@@ -58,6 +60,8 @@ class IngresoController extends Controller
         $ingreso->concepto=$request->concepto;
         $ingreso->saldo=$request->saldo;
         $ingreso->descripcion=$request->descripcion;
+         $ingreso->estado = 'Activo';
+        $ingreso->fecha = $anu;
         $ingreso->save();
         return back()->with('info','El registro de pago se guardado exitosamente');
 
@@ -78,6 +82,7 @@ class IngresoController extends Controller
       
       return view('ingresos.recibo', compact('programacion','usuario','ingresos'));
     }
+     
  /**
      * Display the specified resource.
      *
@@ -88,9 +93,10 @@ class IngresoController extends Controller
     public function edit($id)
     {
       $usuario=Auth::user();
+
       $afiliados=Afiliacion::find($id);
       $ingresos=Ingreso::where('afiliacion_id',$id)->orderBy('id','DESC')->paginate(3);
-      return view('ingresos.recibofiliacion', compact('afiliados','ingresos','usuario'));
+      return view('ingresos.recibofiliacion', compact('afiliados','ingresos','usuario','paciente'));
     }
 
     /**
@@ -100,9 +106,13 @@ class IngresoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update( $id)
     {
-        //
+       $ingreso =Ingreso::find($id);
+        $ingreso->saldo ='0'; //Cancelado
+        $ingreso->update();
+
+     return back()->with('info','se anulo el saldo del paciente');
     }
 
     /**
@@ -113,9 +123,11 @@ class IngresoController extends Controller
      */
     public function destroy($id)
     {
-     $ingreso=Ingreso::find($id);
-     $ingreso->delete();
-     return back()->with('info', 'El registro de ingresos fue eliminado');
+          $ingreso = Ingreso::find($id);
+        $ingreso->estado ='Anulado'; //Cancelado
+        $ingreso->update();
+
+     return back()->with('info','se anulo de manera correcta');
     }
 
   

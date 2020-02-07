@@ -17,7 +17,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        $usuarios=Usuario::orderBy('id','DESC')->paginate(3);
+        $usuarios=Usuario::orderBy('id','DESC')->paginate(6);
       $rols=Rol::all();
        return view('usuario.index', compact('usuarios','rols')); 
     }
@@ -69,11 +69,13 @@ class UsuarioController extends Controller
      */
     public function show($id)
     {
-        //
-    }
 
+     $usuario=Usuario::find($id);
+               
+return view('usuario.mostrar', compact('usuario'));
+    }
     /**
-     * Show the form for editing the specified resource.
+     * Update the specified resource in storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

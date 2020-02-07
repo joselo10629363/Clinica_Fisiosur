@@ -10,7 +10,7 @@
                
 
               <h4>{{$pacientes->persona->nombre}}</h4>
-              <p>{{$pacientes->persona->apellido1}}  {{ $pacientes->persona->apellido2}}</p>
+              <p>{{$pacientes->persona->apellido1}}  {{$pacientes->persona->apellido2}}</p>
               <a style="font-style:italic; font:bold; color: #5DE2CE; font-size: 20px;"> {{$pacientes->afiliacion->nombre}}</a>  
             </div>
             <div class="cover-image"></div>
@@ -29,7 +29,7 @@
                    <p>Telefono:| {{$pacientes->persona->telefono}} </p>
                      <p>Domicilio:| {{$pacientes->persona->domicilio}} </p>
                        <p>Genero:| {{$pacientes->persona->genero}} </p>
-                         <p>Fecha R.:| {{$pacientes->created_at}} </p>
+                         <p>Fecha R.:| {!! \Carbon\Carbon::parse($pacientes->fecha)->format('d-m-Y') !!} </p>
                          <p>Observacion.:| {{$pacientes->descripcion}} </p>
           </div>
         </div>
@@ -49,7 +49,7 @@
 
                   <div class="content">
                     <h5><a href="{{route('reporte.edit',$patologia->id)}}">{{$patologia->patologia->nombre}}</a></h5>
-                    <p class="text-muted"><small> {{$patologia->medico->nombre}} {{$patologia->medico->apellido}} </small><br><small> {{$patologia->created_at}} </small>
+                    <p class="text-muted"><small> {{$patologia->medico->nombre}} {{$patologia->medico->apellido}} </small><br><small> {!! \Carbon\Carbon::parse($patologia->created_at)->format('d-m-Y') !!} </small>
 
 
                     </p> 
@@ -81,7 +81,7 @@
                 <ul class="post-utility">
                   <li class="likes"><a href="#"> <i class="fa fa-user-md" aria-hidden="true"></i> {{ $patologia->medico->nombre}} {{$patologia->medico->apellido}}</a></li>
                   
-                  <li class="comments"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>  {{ $pacientes->created_at}}</li>
+                  <li class="comments"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>  {!! \Carbon\Carbon::parse($pacientes->fecha)->format('d-m-Y') !!}</li>
                 </ul>
               </div>
            
@@ -90,49 +90,7 @@
       
                
             </div>
-            <div class="tab-pane fade" id="user-settings">
-              <div class="tile user-settings">
-                <h4 class="line-head">Settings</h4>
-                <form>
-                  <div class="row mb-4">
-                    <div class="col-md-4">
-                      <label>First Name</label>
-                      <input class="form-control" type="text">
-                    </div>
-                    <div class="col-md-4">
-                      <label>Last Name</label>
-                      <input class="form-control" type="text">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-8 mb-4">
-                      <label>Email</label>
-                      <input class="form-control" type="text">
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-md-8 mb-4">
-                      <label>Mobile No</label>
-                      <input class="form-control" type="text">
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-md-8 mb-4">
-                      <label>Office Phone</label>
-                      <input class="form-control" type="text">
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-md-8 mb-4">
-                      <label>Home Phone</label>
-                      <input class="form-control" type="text">
-                    </div> 
-                  </div>
-                  <div class="row mb-10">
-                    <div class="col-md-12">
-                      <button class="btn btn-primary" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i> Save</button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>

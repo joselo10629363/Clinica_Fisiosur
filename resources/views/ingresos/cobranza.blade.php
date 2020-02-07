@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>REPORTE DE PACIENTES</title>
+    <title>BOLETA DE Pago</title>
     <style type="text/css">
     body{
         font-size: 16px;
@@ -34,7 +34,13 @@
     .tabla3 td{
         border: 1px solid #000;
     }
-     
+    .tabla3 .cancelado{
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 0;
+        border-top: 1px dotted #000;
+        width: 200px;
+    }
     .emisor{
         color: red;
     }
@@ -85,16 +91,12 @@
 
         <table width="20%" align="right">
                         <tr>
-                             
-      
-                <td height="15"   align="center" class="border"><span class="h3">Inst.:{{$afiliacion->nombre}}   </span></td>
-                
+                            <td height="15"   align="center" class="border"><span class="h3">particular</span></td>
                         </tr>
                          
                         <tr>
-                            <td height="15"  align="center" class="border"> Nº-000<span class="text"> </span></td>
+                            <td height="15"  align="center" class="border"> Nº- 0000<span class="text">{{$ingresos->id}}</span></td>
                         </tr>
-                         
                     </table>
         <table width="100%" class="tabla1">
 
@@ -105,21 +107,16 @@
                 </td>
             </tr>
             <tr>
-                <td align="center">REPORTE DE PACIENTES - CLINICA FISIOSUR</td>
+                <td align="center">CLINICA FISIOSUR</td>
             </tr>
             <tr>
-            	
                 <td align="center">Dir.: Av. Santa Cruz N° 1378 entre Cochabamba y Benemeritos  </td>
-
             </tr>
         </table>
         <table width="100%" class="tabla2">
             <tr>
-                 
-                   <td width="11%">Comprende:</td>
-                <td width="37%" class="linea"><span class="text">de {!! \Carbon\Carbon::parse($inicio)->format('d-m-Y') !!} a  {!! \Carbon\Carbon::parse($fin)->format('d-m-Y') !!}</span></td>
-                 
-            
+                <td width="11%">Señor (es):</td>
+                <td width="37%" class="linea"><span class="text">DEDEWDWE</span></td>
                 <td width="5%">&nbsp;</td>
                 <td width="13%">&nbsp;</td>
                 <td width="4%">&nbsp;</td>
@@ -128,13 +125,10 @@
                 <td width="7%" align="center" class="border fondo"><strong>AÑO</strong></td>
             </tr>
             <tr>
-                <td>Emite:</td>
-                <td class="linea"><span class="text"> {{auth()->user()->persona->nombre }} {{auth()->user()->persona->apellido1 }} {{auth()->user()->persona->apellido2 }}</span></td>
-                 
-                 
-                <td>Rol:</td>
-               <td class="linea"><span class="text">{{auth()->user()->rol->nombre}} </span></td>
-                   
+                <td>Dirección:</td>
+                <td class="linea"><span class="text">dedededed}</span></td>
+                <td>DNI:</td>
+                <td class="linea"><span class="text">dedede</span></td>
                 <td>&nbsp;</td>
                 <td align="center" class="border"><span class="text">{{ $dia }}</span></td>
                 <td align="center" class="border"><span class="text">{{ $me }}</span></td>
@@ -142,45 +136,46 @@
             </tr>
         </table>
         <table width="100%" class="tabla3">
-<thead>
-            <tr >
-                <td  align="center" class="fondo"><strong>ID</strong></td>
-                <td align="center" class="fondo"><strong>PACIENTE</strong></td>
-                <td align="center" class="fondo"><strong>CEDULA </strong></td>
-                <td align="center" class="fondo"><strong>DOMICILIO</strong></td>
-                <td align="center" class="fondo"><strong>OCUPACION</strong></td>
-                <td align="center" class="fondo"><strong>FECHA</strong></td>
+            <tr>
+                <td align="center" class="fondo"><strong>CANT.</strong></td>
+                <td align="center" class="fondo"><strong>DESCRIPCIÓN</strong></td>
+                <td align="center" class="fondo"><strong>P. UNITARIO</strong></td>
+                <td align="center" class="fondo"><strong>IMPORTE</strong></td>
             </tr>
-
-        </thead>
-        
          
-           <tbody>
-                  
-                  @foreach($pacientes as $paciente)
-                 <tr>
-           <td>{{$paciente->id}}</td>
-                <td>{{$paciente->persona->nombre }} {{$paciente->persona-> apellido1}} {{$paciente->persona-> apellido2}}</td>
-               
-                  <td>{{$paciente->persona->cedula}}</td>
-                  
-                  <td>{{$paciente->persona->domicilio}}</td>
-                <td>{{$paciente->ocupacion}}</td>
-           
-                <td>{!! \Carbon\Carbon::parse($paciente->fecha)->format('d-m-Y') !!} </td>
-
-           
-
-                </tr>
-                 @endforeach
-                </tbody>
-          
-              
+            <tr>
+                <td width="7%" align="center"><span class="text"> DFFFFGGF</span></td>
+                <td width="59%"><span class="text">FDDFDFF</span></td>
+                <td width="16%" align="right"><span class="text">DFDFDF</span></td>
+                <td width="18%" align="right"><span class="text">DFFDFFD</span></td>
+            </tr>
+            
+            <tr>
+                <td width="7%">&nbsp;</td>
+                <td width="59%">&nbsp;</td>
+                <td width="16%">&nbsp;</td>
+                <td width="18%" align="left">&nbsp;</td>
+            </tr>
+            
+            <tr>
+                <td style="border:0;">&nbsp;</td>
+                <td style="border:0;">&nbsp;</td>
+                <td align="right"><strong>TOTAL S/.</strong></td>
+                <td align="right"><span class="text"> weedede</span></td>
+            </tr>
+            <tr>
+                <td style="border:0;">&nbsp;</td>
+                <td align="center" style="border:0;">
+                    <table width="200" border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td align="center" class="cancelado">CANCELADO</td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="border:0;">&nbsp;</td>
+                <td align="center" style="border:0;" class="emisor"><strong>EMISOR</strong></td>
+            </tr>
         </table>
-          
-          <br></br>
-       <p align="center">_____________________________</p>
     </div>
- 
 </body>
 </html>

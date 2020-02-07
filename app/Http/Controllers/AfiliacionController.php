@@ -102,8 +102,20 @@ class AfiliacionController extends Controller
      */
     public function destroy($id)
     {
+ 
     $f=Afiliacion::find($id);
-        $f->delete();
+      $f->delete();
         return back()->with('info', 'El afiliado fue retirado');
+    }
+
+
+
+    public function anulaAfiliado(Request $request, $id){
+        if($request->ajax()) {
+            $afiliado = \App\Afiliacion::find($id);
+            $afiliado ->delete();
+            return Response()->json('info', 'El afiliado fue retirado');
+
+        }
     }
 }

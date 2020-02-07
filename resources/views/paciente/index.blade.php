@@ -3,13 +3,13 @@
 <main class="app-content">
     <div class="app-title">
         <div>
-          <h1><i class="fa fa-edit"></i> Registro del Paciente</h1>
+          <h1><i class="fa fa-edit"></i> Registro de pacientes</h1>
           <p>Nuevo</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-          <li class="breadcrumb-item">Registro</li>
-          <li class="breadcrumb-item"><a href="#">Formulario Paciente</a></li>
+          <li class="breadcrumb-item"></li>
+          <li class="breadcrumb-item"><a href="#">registro de Paciente</a></li>
         </ul>
       </div>  
        <div class="row">
@@ -49,11 +49,11 @@
     </div>
  <div class="form-group">
     <label for="">Cedula</label>
-    <input  type="text"  required="" placeholder="C.I." name="cedula" class="form-control">
+    <input  type="text"  required="" placeholder="C.I."  maxlength="10" name="cedula" class="form-control">
     </div>
  <div class="form-group">
     <label for="">Telefono</label>
-    <input  type="text"  required="" placeholder="Telefono" name="telefono" class="form-control">
+    <input  type="text"  required="" placeholder="Telefono" maxlength="10" name="telefono" class="form-control">
     </div>
               </div>
               <div class="col-lg-4 offset-lg-1">
@@ -108,63 +108,67 @@
             <div class="tile-footer">
                
 
-            </div>
-
-
-          
-              <table class="table table-hover table-striped">
+            </div> 
+       <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
-                  <tr   style="background-color:  #48C9B0">
-               
-                   
+                  <tr style="background-color:  #48C9B0">
+                   <th>ID</th>
                     <th>Paciente</th>
-                     <th>Afiliacion</th>
-                    <th>C.i.</th>
-                    <th>Telefono</th>
+                    <th>Afiliacion</th>
+                    <th>Cedula</th>
+                    <th>Domicilio</th>
                     <th>Ocupacion</th>
-                    <th>Observacion</th>
-                    <th colspan="3">&nbsp;</th>
+                     <th></th>
+                     <th></th>
+                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-               
+                  
                   @foreach($pacientes as $paciente)
                  <tr>
+                <td>{{$paciente->id}}</td>
               
-                
-                <td class="mailbox-messages mailbox-name" ><a style="display:block"><i class="fa fa-user"></i>&nbsp;&nbsp; {{$paciente->persona->nombre}} {{$paciente->persona->apellido1}}  {{$paciente->persona->apellido2}}</td>
-               
-                 <td>{{$paciente->afiliacion->nombre}}</td>
-
+                <td>{{$paciente->persona->nombre }} {{$paciente->persona-> apellido1}} {{$paciente->persona-> apellido2}}</td>
+                  <td>{{$paciente->afiliacion->nombre}}</td>
                   <td>{{$paciente->persona->cedula}}</td>
-                   <td>{{$paciente->persona->telefono}}</td>
+                  
+                  <td>{{$paciente->persona->domicilio}}</td>
                 <td>{{$paciente->ocupacion}}</td>
-                <td>{{$paciente->descripcion}}</td>
-                
-                 
+                <td  width="3px" ><a href="{{route('paciente.show', $paciente->id)}}" ><i class="fa fa-eye" aria-hidden="true"></i>
+                 </a> </td>
+                <td width="3px">
+                  <a href="{{route('paciente.edit', $paciente->id)}}"  class="btn btn-warning btn-sm"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 
-                <td width="10px">
-                  <a href="{{route('paciente.edit', $paciente->id)}}"  class="btn btn-warning btn-sm">Editar</a></td>
+                </td>
           
-                 <td>
+                 <td width="3px" >
                 <form action="{{route('paciente.destroy', $paciente->id)}}" method="POST">
                   {{csrf_field()}}
                   <input type="hidden" name="_method"   value="DELETE">
-                  <button  class="btn btn-danger btn-sm">Eliminar</button>
+                  <button  class="btn btn-danger btn-sm" onclick="return confirm('Esta seguro de eliminar de manera definitiva?')"><i class="fa fa-trash-o" aria-hidden="true"></i> </button>
                 </form>
                  </td>
-              </tr>
-
-                  @endforeach
+                </tr>
+                 @endforeach
                 </tbody>
-
-              </table> 
-               {!!$pacientes->render()!!}
+                     
+              </table>
           </div>
         </div>
 
 
       </div>           
-
+<script src="{{url('/')}}/js/jquery-3.2.1.min.js"></script>
+    <script src="{{url('/')}}/js/popper.min.js"></script>
+    <script src="{{url('/')}}/js/bootstrap.min.js"></script>
+    <script src="{{url('/')}}/js/main.js"></script>
+    <!-- The javascript plugin to display page loading on top-->
+    <script src="js/plugins/pace.min.js"></script>
+    <!-- Page specific javascripts-->
+    <!-- Data table plugin-->
+    <script type="text/javascript" src="{{url('/')}}/js/plugins/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="{{url('/')}}/js/plugins/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript">$('#sampleTable').DataTable();</script>
     </main>
 @stop 

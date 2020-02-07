@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Egreso;
 use App\Concepto;
 use App\Usuario;
+use Carbon\Carbon; 
 use App\Http\Requests\EgresoRequest;
 class EgresoController extends Controller
 {
@@ -16,11 +17,16 @@ class EgresoController extends Controller
      */
     public function index()
     {
-         $conceptos=Concepto::orderBy('id','DESC')->paginate(5);
-      
+      $me=Carbon::now()->format('m');
+       $anu=Carbon::now()->format('Y');
+ 
+          $conceptos=Concepto::orderBy('id','DESC')->paginate(5);
+         $egre=Egreso::where('estado','Activo')->sum('monto_total');
+       $mes=Egreso::where('estado','Activo')->whereMonth('fecha', $me)->sum('monto_total') ; 
+       $anual=Egreso::where('estado','Activo')->whereYear ('fecha', $anu)->sum('monto_total') ;
       $egresos=Egreso::orderBy('id','DESC')->paginate(5);
-       $usuarios=Usuario::All();
-       return view('egresos.index',compact('conceptos', 'egresos','usuarios') ); 
+     $usuarios=Usuario::All();
+    return view('egresos.index',compact('conceptos', 'egresos','usuarios', 'egre','mes','anual') ); 
     }
 
     /**
@@ -41,12 +47,17 @@ class EgresoController extends Controller
      */
     public function store(EgresoRequest $request)
     {
-        
+ 
+       
+         $anu=Carbon::now()->format('Y-m-d');
+ 
         $egreso=new Egreso;
         $egreso->concepto_id= $request->concepto_id;
         $egreso->usuario_id=$request->usuario_id;
         $egreso->monto_total=$request->monto;
         $egreso->descripcion=$request->descripcion;
+        $egreso->estado = 'Activo';
+        $egreso->fecha = $anu;
         $egreso->save();
         return back()->with('info','El Egreso fue registrado de manera correcta');
     }
@@ -93,9 +104,10 @@ class EgresoController extends Controller
      */
     public function destroy($id)
     {
+        $egreso = Egreso::find($id);
+        $egreso->estado ='Anulado'; //Cancelado
+        $egreso->update();
 
-     $egreso=Egreso::find($id);
-     $egreso->delete();
-     return back()->with('info','Elregistro de egreso fue eliminado de manera correcta');
+     return back()->with('info','se anulo de manera correcta');
     }
 }

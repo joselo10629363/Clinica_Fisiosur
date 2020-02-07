@@ -26,7 +26,7 @@ class IngresoRequest extends FormRequest
         return [
             
            'monto'=>'required|numeric ',
-            'concepto'=>'required|max:50',
+            'concepto'=>'required|alpha|max:50',
              'saldo'=>'required|numeric ',
             'descripcion'=>'required|max:255',
 

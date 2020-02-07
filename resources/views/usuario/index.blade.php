@@ -50,11 +50,11 @@
     </div>
  <div class="form-group">
     <label for="">Cedula</label>
-    <input  type="text"  required="" placeholder="C.I." name="cedula" class="form-control">
+    <input  type="text"  required="" placeholder="C.I." maxlength="10" name="cedula" class="form-control">
     </div>
  <div class="form-group">
     <label for="">Telefono</label>
-    <input  type="text"  required="" placeholder="Telefono" name="telefono" class="form-control">
+    <input  type="text"  required="" placeholder="Telefono" maxlength="10" name="telefono" class="form-control">
     </div>
               </div>
               <div class="col-lg-4 offset-lg-1">
@@ -118,7 +118,7 @@
                     <th>Rol</th>
                     <td>Telefono</td>
                     <th>Correo</th>
-                 <th>Fechado</th>
+                 <th>Fecha Registro</th>
                     <th colspan="3">&nbsp;</th>
                   </tr>
                 </thead>
@@ -135,13 +135,15 @@
                      <td>{{$usuario->persona->telefono}}</td>
                 <td>{{$usuario->email}}</td>
                   <td>{{$usuario->created_at}}</td>
+                   <td  width="3px" ><a href="{{route('usuario.show', $usuario->id)}}" ><i class="fa fa-eye" aria-hidden="true"></i>
+                 </a> </td>
                 <td width="10px"><a href="{{route('usuario.edit', $usuario->id)}}"  class="btn btn-warning btn-sm">Editar</a></td>
           
                  <td>
                 <form action="{{route('usuario.destroy', $usuario->id)}}" method="POST">
                   {{csrf_field()}}
                   <input type="hidden" name="_method"   value="DELETE">
-                  <button  class="btn btn-danger btn-sm">Eliminar</button>
+                  <button  class="btn btn-danger btn-sm"  onclick="return confirm('Estas seguro de eliminar de manera definitiva?')">Eliminar</button>
                 </form>
                  </td>
               </tr>

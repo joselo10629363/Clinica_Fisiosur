@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Ingreso extends Model
 {
 
-
+public $timestamps = false;
+ 
 protected $table = 'ingresos';  
  
  public function usuario()

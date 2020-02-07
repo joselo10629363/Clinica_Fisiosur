@@ -12,7 +12,8 @@
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
-    <header class="app-header"><a class="app-header__logo" href="index.html">Fisiosur</a>
+    <header class="app-header"><a style=" color:#F5DA81; font-size: 40px "  class="app-header__logo" href="#">C. Fisiosur</a>
+
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">

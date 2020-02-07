@@ -74,9 +74,6 @@
                 <thead>
                   <tr  style="background-color:#5DADE2 ">
                     <th>nombre</th>
-                    
-                    <th>Descripcion de la Institucion</th>
-
                     <th>Estado</th>
                     <th colspan="2">&nbsp;</th>
                   </tr>
@@ -85,9 +82,11 @@
                 <tbody>
                   <tr>
                     <td class="mailbox-messages mailbox-name" ><a style="display:block"><i class="fa fa-user"></i>&nbsp;&nbsp;<?= $afiliacion->nombre;  ?></a></td>
-                   <td>{{$afiliacion->descripcion}}</td>
+                 
                  <td>{{$afiliacion->estado}}</td>
                  
+   
+   <td width="10px"><a href="{{route('generarpdf.show',$afiliacion->id)}} "  ><i class="fa fa-file-pdf-o" aria-hidden="true"></i> </a></td>
    <td width="10px"><a href="{{route('ingreso.edit', $afiliacion->id)}}"  class="btn btn-info btn-sm"><i class="fa fa-usd" aria-hidden="true"></i>Recibo</a></td>
                   </tr>
                  @endforeach

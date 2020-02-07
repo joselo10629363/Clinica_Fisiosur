@@ -95,7 +95,7 @@
                 <form action="{{route('patologia.destroy', $patologia->id)}}" method="POST">
                   {{csrf_field()}}
                   <input type="hidden" name="_method"   value="DELETE">
-                  <button  class="btn btn-danger btn-sm">Eliminar</button>
+                  <button  class="btn btn-danger btn-sm" onclick="return confirm('esta seguro de eliminar?')" >Eliminar</button>
                 </form>
                  </td>
               </tr>

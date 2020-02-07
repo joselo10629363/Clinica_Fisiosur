@@ -30,9 +30,9 @@
         
         <div class="col-md-6" >
          
-          <div class="tile" style="background-color: #AEE5F9" >
+          <div class="tile" style="background-color: #BFC9CA" >
             <h3 class="tile-title"></h3>
-            <div class="modal-footer" style=" border-radius:8px; background-color:#5DADE2">
+            <div class="modal-footer" style=" border-radius:8px; background-color:#AEB6BF">
                <div>
 
                 <h5>RECIBO</h5>
@@ -62,10 +62,10 @@
 
           
                 <div class="form-group">
-                    <label for="">Monto Total</label>  
+                    <label for="">Monto de pago</label>  
                   <div class="input-group">
 
-   <input class="form-control"  type="text" maxlength="10"  name="monto" placeholder="Monto Total"required=""/> <div class="input-group-prepend"><span class="input-group-text">Bs</span></div>
+   <input class="form-control"  type="text" maxlength="10"  name="monto" placeholder="Pago efectuado"required=""/> <div class="input-group-prepend"><span class="input-group-text">Bs</span></div>
                     </div>            
                 
                      </div>
@@ -90,7 +90,8 @@
                     <label for="">Descripcion</label>
                     <textarea class="form-control" name='descripcion' required="" rows="2"></textarea>
                   </div> 
-                 <button type="subtmit" class=" btn btn-primary pull-ringh"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button>
+                 <button type="subtmit" class=" btn btn-primary pull-right"><i class="fa fa-fw fa-lg fa-check-circle"></i>Guardar</button><br>
+
               </form>
 
             </div>
@@ -124,27 +125,46 @@
                   </div>
                 <div class="col-md-5" >
             
-                     <a style="font-style:italic; font-weight:bold;">Pago efectuado : {{$ingreso->monto_total}}</a><br>
-                     <a style="font-style:italic; font-weight:bold;" >Saldo : {{$ingreso->saldo}}</a><br>
-                      <a style="font-style:italic;"class="card-text pull-left">Fecha : {{$ingreso->created_at}}. </a>
+                     <a style="font-style:italic; font-weight:bold;">Pago efectuado : {{$ingreso->monto_total}} Bs</a><br>
+                     <a style="font-style:italic; font-weight:bold;" >Saldo : {{$ingreso->saldo}} Bs</a><br>
+                      <a style="font-style:italic;"class="card-text pull-left">Fecha :{!! \Carbon\Carbon::parse($ingreso->fecha)->format('d-m-Y') !!}  </a>
                 </div>
                 
                 
               </div>
-               <div class="row d-print-none mt-2">
-                <div class="col-12 text-right"><a class="btn btn-primary btn-sm" href="javascript:window.print();" target="_blank"><i class="fa fa-print"></i> </a></div>
-              </div>
+              
             </section>
             </div>
 
               </form>
 
-              <form action="{{route('ingreso.destroy',$ingreso->id)}}" method="POST">
-                  {{csrf_field()}}
-                  <input type="hidden" name="_method"   value="DELETE">
-                  <button class="btn  pull-right btn-sm" ><i class="fa fa-trash" aria-hidden="true"></i></button>
-                </form><br>
-               
+@if ($ingreso['estado']=="Anulado")
+     
+                  <button class="btn btn-danger btn-sm">
+                   <i class="fa fa-ban" aria-hidden="true"></i>
+                  </button>
+                
+                @elseif ($ingreso['estado']=="Activo")
+
+<a href="" data-target="#modal-{{$ingreso->id}}" data-toggle="modal">
+                  <button class="btn btn-success btn-sm">
+                    Anular
+                  </button>
+                </a>
+ @endif
+                      @if ($ingreso['saldo']>"0")
+     
+
+<a href="" data-target="#modal-cambia-{{$ingreso->id}}" data-toggle="modal">
+                  <button class="btn btn-success btn-sm">
+                    Quitar saldo
+                  </button>
+                </a>
+ @endif
+       <a href="{{route('ingresospdf.show', $ingreso->id)}}"  class="btn btn-outline-info btn-sm"><i class="fa fa-print"></i></a>
+            @include('ingresos.modal')     
+                
+              @include('ingresos.modals')
                @endforeach
                  {!!$ingresos->render()!!}
             </div>
@@ -158,14 +178,5 @@
       
       </div>
     </main>
-    <script type="text/javascript">
-      if(document.location.hostname == 'pratikborsadiya.in') {
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-        ga('create', 'UA-72504830-1', 'auto');
-        ga('send', 'pageview');
-      }
-    </script>
+    
     @stop

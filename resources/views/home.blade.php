@@ -22,7 +22,7 @@
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
-     <header class="app-header"><a style="   font-size: 40px "  class="app-header__logo" href="#">C. Fisiosur</a>
+     <header class="app-header"><a style=" color:#F5DA81; font-size: 40px "  class="app-header__logo" href="#">C. Fisiosur</a>
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
       <!-- Navbar Right Menu-->
       <ul class="app-nav">
@@ -32,26 +32,12 @@
         </li>
         <!--Notification Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
-          <ul class="app-notification dropdown-menu dropdown-menu-right">
-            <li class="app-notification__title">Notificaciones</li>
-            <div class="app-notification__content">
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
-                  <div>
-                    <p class="app-notification__message">Lisa sent you a mail</p>
-                    <p class="app-notification__meta">2 min ago</p>
-                  </div></a></li>
-            
-                    
-              </div>
-            </div>
-            <li class="app-notification__footer"><a href="#">Administracion</a></li>
-          </ul>
+           
         </li>
         <!-- User Menu-->
        <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-cog fa-lg"></i> Configuracion</a></li>
-            <li><a class="dropdown-item" href="page-user.html"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
+             
             <li><a class="dropdown-item" href="/logout"><i class="fa fa-sign-out fa-lg"></i> Cerrar sesion</a></li>
           </ul>
         </li>
@@ -71,14 +57,8 @@
       </div>
       <ul class="app-menu">
          <li class="app-menu__item "style="background-color:#1F618D"   class="header">NAVEGACION PRINCIPAL</li>
-        <li><a class="app-menu__item " href="#"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Agenda Medica</span></a></li>
-        
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-address-card" aria-hidden="true"></i><span class="app-menu__label">Registro Paciente</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="{{route('paciente.index')}}"><i class="icon fa fa-sticky-note-o" aria-hidden="true"></i> Registro</a></li>
-            <li><a class="treeview-item" href="" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Reportes</a></li>
-          </ul>
-        </li>
+       
+       <li><a class="app-menu__item " href="{{route('paciente.index')}}"><i class="app-menu__icon  fa fa-medkit" aria-hidden="true"></i><span class="app-menu__label">Gestionar pacientes</span></a></li>
         
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-database" aria-hidden="true"></i><span class="app-menu__label">Reportes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
@@ -93,13 +73,6 @@
 
   
 <li><a class="app-menu__item " href="{{route('egreso.index')}}"><i class="app-menu__icon fa fa-cc" aria-hidden="true"></i><span class="app-menu__label">Gestionar Egresos</span></a></li>
-
-
-
-
-
-
-
 <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-user-circle-o" aria-hidden="true"></i><span class="app-menu__label">Usuario y Roles</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{{route('usuario.index')}}"><i class="icon fa fa-user-plus" aria-hidden="true"></i>Usuarios</a></li>
@@ -110,13 +83,7 @@
         </li>
  <li><a class="app-menu__item " href="{{route('filiacion.index')}}"><i class="app-menu__icon fa fa-id-badge" aria-hidden="true"></i><span class="app-menu__label">Afiliacion</span></a></li>
 
-<li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-upload" aria-hidden="true"></i><span class="app-menu__label">Backup</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="blank-page.html"><i class="icon fa fa-circle-o"></i> Generar backup</a></li>
-          </ul>
-        </li>
-
-
+ 
       
       </ul>
     </aside>
@@ -124,7 +91,7 @@
       <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i> Panel de administracion</h1>
-          <p>Muestra resumida  de los registros en la clinica Fisiosur</p>
+          <p>Muestra de datos mas relevantes de los registros en la clinica Fisiosur</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
           <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -181,9 +148,6 @@
             </div>
           </div>
         </div>
- 
-         
-
             
         <div class="col-md-6 col-lg-3">
           <div class="widget-small warning coloured-icon"><i class="icon fa fa-files-o fa-3x"></i>
@@ -193,10 +157,6 @@
             </div>
           </div>
         </div>
-
- 
-
-
 
          <div class="col-md-6 col-lg-3">
           <div style="background-color: #D1A653"  class="widget-small   coloured-icon"><i class="icon fa fa-user-o fa-3x"></i>
@@ -215,36 +175,16 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Monthly Sales</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <canvas class="embed-responsive-item" id="lineChartDemo"></canvas>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="tile">
-            <h3 class="tile-title">Support Requests</h3>
-            <div class="embed-responsive embed-responsive-16by9">
-              <canvas class="embed-responsive-item" id="pieChartDemo"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
+     
       <div class="row">
         <div class="col-md-8">
           <div class="tile">
-            <h3 class="tile-title">Atenciones para hoy</h3>
+            <center><h5 >AGENDA MEDICA</h5></center>
              
               <table class="table table-hover table-striped">
                 <thead>
                   <tr style="background-color:#5DADE2">
-  
-                   
-                    <th>Patologia</th>
-                    <th>Paciente</th>
+                    <th>Paciente</th> 
                      <th>Fecha</th>
                      <th>Horario</th>
                     <th>Dia</th>
@@ -255,9 +195,9 @@
                 </thead>
                 <tbody>  
                <tr>
-                @foreach($programaciones as $programacion)
-              
                 
+                @foreach($programaciones as $programacion)
+
                 <td>{{$programacion->diagnostico->paciente->persona->nombre}}
                  {{$programacion->diagnostico->paciente->persona->apellido1}} {{$programacion->diagnostico->paciente->persona->apellido2}}</td>
                  <td>{{$programacion->fecha}}</td>
@@ -276,13 +216,48 @@
             
           </div>
         </div>
+
+        
         <div class="col-md-4">
           <div class="tile">
-            <h3 class="tile-title"> Afiliados Activos</h3>
+            <CENTER><h5>AFILIADOS</h5></CENTER>
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr style="background-color:#5DADE2">
+  
+                   
+                    <th>Nombre</th>
+                    <th>Estado</th>
+                     <th>Fecha</th>
+                      
+                   
+                    <th colspan="3">&nbsp;</th>
+                  </tr>
+                </thead>
+                <tbody>  
+               <tr>
+           @foreach($afi as $af)
+              
+                
              
+              <td style="font-style:italic; font:bold; color: #DF7401; font-size: 20px;"> {{$af->nombre}}</td>  
 
+                 <td>{{$af->estado}}</td>
+                  <td>{{$af->created_at}}</td>
+                  
+                 
+                   </tr>
 
-          </div>
+                  @endforeach
+                </tbody>
+
+              </table> 
+             
+ 
+              
+            
+
+          
         </div>
       </div>
     </main>

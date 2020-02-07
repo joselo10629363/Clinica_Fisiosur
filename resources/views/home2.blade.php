@@ -15,7 +15,7 @@
   </head>
   <body class="app sidebar-mini rtl">
     <!-- Navbar-->
-    <header class="app-header"><a style=" color:#D6166B; font-size: 40px "  class="app-header__logo" href="#">C. Fisiosur</a>
+    <header class="app-header"><a style=" color:#F5DA81; font-size: 40px "  class="app-header__logo" href="#">C. Fisiosur</a>
 
 
       <!-- Sidebar toggle button--><a class="app-sidebar__toggle" href="#" data-toggle="sidebar" aria-label="Hide Sidebar"></a>
@@ -27,26 +27,11 @@
         </li>
         <!--Notification Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Show notifications"><i class="fa fa-bell-o fa-lg"></i></a>
-          <ul class="app-notification dropdown-menu dropdown-menu-right">
-            <li class="app-notification__title">Notificaciones</li>
-            <div class="app-notification__content">
-              <li><a class="app-notification__item" href="javascript:;"><span class="app-notification__icon"><span class="fa-stack fa-lg"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-envelope fa-stack-1x fa-inverse"></i></span></span>
-                  <div>
-                    <p class="app-notification__message">Lisa sent you a mail</p>
-                    <p class="app-notification__meta">2 min ago</p>
-                  </div></a></li>
-            
-                    
-              </div>
-            </div>
-            <li class="app-notification__footer"><a href="#">Administracion</a></li>
-          </ul>
-        </li>
+                 </li>
         <!-- User Menu-->
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
-            <li><a class="dropdown-item" href="#"><i class="fa fa-cog fa-lg"></i> Configuracion</a></li>
-            <li><a class="dropdown-item" href="#"><i class="fa fa-user fa-lg"></i> Perfil</a></li>
+             
             <li><a class="dropdown-item" href="/logout"><i class="fa fa-sign-out fa-lg"></i> Cerrar sesion</a></li>
           </ul>
         </li>
@@ -67,15 +52,13 @@
       <ul class="app-menu">
 
          <li class="app-menu__item "style="background-color:#1F618D "   class="header">NAVEGACION PRINCIPAL</li>
-        <li><a class="app-menu__item " href="#"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Agenda Medica</span></a></li>
         
         
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-address-card" aria-hidden="true"></i><span class="app-menu__label">Registro Paciente</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="{{route('paciente.index')}}"><i class="icon fa fa-sticky-note-o" aria-hidden="true"></i> Registro</a></li>
-            <li><a class="treeview-item" href="" target="_blank" rel="noopener"><i class="icon fa fa-circle-o"></i> Reportes</a></li>
-          </ul>
-        </li>
+         
+       <li><a class="app-menu__item " href="{{route('paciente.index')}}"><i class="app-menu__icon  fa fa-medkit" aria-hidden="true"></i><span class="app-menu__label">Gestionar pacientes</span></a></li>
+          
+
+        
         
          <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-database" aria-hidden="true"></i><span class="app-menu__label">Reportes</span><i class="treeview-indicator fa fa-angle-right"></i></a>
              <ul class="treeview-menu">
@@ -102,21 +85,17 @@
         </li>
  <li><a class="app-menu__item " href="{{route('filiacion.index')}}"><i class="app-menu__icon fa fa-id-badge" aria-hidden="true"></i><span class="app-menu__label">Afiliacion</span></a></li>
 
-<li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-upload" aria-hidden="true"></i><span class="app-menu__label">Backup</span><i class="treeview-indicator fa fa-angle-right"></i></a>
-          <ul class="treeview-menu">
-            <li><a class="treeview-item" href="blank-page.html"><i class="icon fa fa-circle-o"></i> Generar backup</a></li>
-          </ul>
-        </li>
+ 
       </ul>
     </aside>
     @yield('home2')
-    <!-- Essential javascripts for application to work-->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+ 
+    <script src="{{url('/')}}/js/jquery-3.2.1.min.js"></script>
+    <script src="{{url('/')}}/js/popper.min.js"></script>
+    <script src="{{url('/')}}/js/bootstrap.min.js"></script>
+    <script src="{{url('/')}}/js/main.js"></script>
     <!-- The javascript plugin to display page loading on top-->
-    <script src="js/plugins/pace.min.js"></script>
+    <script src="{{url('/')}}/js/plugins/pace.min.js"></script>
     <!-- Page specific javascripts-->
     <script type="text/javascript" src="js/plugins/chart.js"></script>
     <script type="text/javascript">

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 class Paciente extends Model
 {
 	 protected $table = 'paciente';
+    public $timestamps = false; 
 
 	 public function afiliacion(){
        return $this->belongsTo(Afiliacion::class);

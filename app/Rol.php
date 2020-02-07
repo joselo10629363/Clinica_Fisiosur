@@ -7,7 +7,7 @@ use App\Usuario;
 class Rol extends Model
 {
       protected $table = 'rol';
-
+  
      
         public function usuario()
         {

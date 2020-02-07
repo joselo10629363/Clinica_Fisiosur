@@ -29,6 +29,7 @@
     <input class="form-control" id="demoDate" type="text" name="fecha" placeholder="Seleccionar fecha"required=""/> 
  </div>
  </div>
+ 
           <div class="form-group">
             <div class="input-group">
         <label for="">Dias de tratamientos</label>

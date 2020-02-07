@@ -76,7 +76,11 @@ class ConceptoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+         $concepto=Concepto::find($id);
+        $concepto->nombre= $request->nombre;
+        $concepto->save();
+        return back()->with('info', 'El registro del concepto se modifico correctamente');
     }
 
     /**
@@ -88,8 +92,6 @@ class ConceptoController extends Controller
     public function destroy($id)
     {
 
-     $concepto=Concepto::find($id);
-        $concepto->delete();
-        return back()->with('info', 'El concepto de egreso  fue eliminado');
+    
     }
 }

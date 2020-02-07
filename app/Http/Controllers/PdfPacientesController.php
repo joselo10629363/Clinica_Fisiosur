@@ -36,8 +36,19 @@ class PdfPacientesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    { 
+
+        $dia=Carbon::now()->format('d');
+        $me=Carbon::now()->format('m');
+        $anu=Carbon::now()->format('Y');
+        $id= $request->afiliacion_id;
+        $inicio=$request->fecha1;
+        $fin= $request->fecha2;
+        $afiliacion=Afiliacion::find($id);
+        $pacientes=Paciente::whereBetween('fecha', [$inicio, $fin])->where("afiliacion_id","=",$id)->get();
+        $listado=PDF::loadView('pdf.pdfpacientes',compact('pacientes','afiliacion','dia','me','anu','inicio','fin'));
+ return $listado->stream();
+
     }
 
     /**

@@ -15,7 +15,7 @@ class MedicoController extends Controller
     public function index()
     {
 
-$medicos=Medico::orderBy('id','DESC')->paginate(6);
+$medicos=Medico::orderBy('id','DESC')->paginate(5);
        return view('medico.index',compact('medicos') );
 
     }

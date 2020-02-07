@@ -27,13 +27,13 @@ class PacienteRequest extends FormRequest
            'nombre'=>'required|max:30',
            'apellido1'=>'required|max:25',
            'apellido2'=>'nullable|max:25',
-           'cedula' => 'required|String|max:10',
+           'cedula' => 'required|Numeric',
             'genero'=>'required|max:2',
-            'telefono'=>'required|max:10',
+            'telefono'=>'required| Numeric',
             'domicilio'=>'required|max:50',
             'afiliacion_id'=>'required',
             'ocupacion'=>'required|max:30',
-            'descripcion'=>'required|max:255',
+            'descripcion'=>'required|String|min:5|max:255',
         ];
     }
 }

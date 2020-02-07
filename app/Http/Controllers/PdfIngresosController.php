@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
    use Barryvdh\DomPDF\Facade as PDF; 
   use App\Ingreso;
+    use Carbon\Carbon; 
 class PdfIngresosController extends Controller
 {
     /**
@@ -14,8 +15,16 @@ class PdfIngresosController extends Controller
      */
     public function index()
     {
+
+          $me=Carbon::now()->format('m');
+       $anu=Carbon::now()->format('Y');
+ 
+           
+         $egre=Ingreso::sum('monto_total') ;
+       $mes=Ingreso::whereMonth('fecha', $me)->sum('monto_total') ; 
+       $anual=Ingreso::whereYear ('fecha', $anu)->sum('monto_total') ;
         $ingresos=Ingreso::all();
-           return view('reportes.reporteingresos',compact('ingresos') );  
+           return view('reportes.reporteingresos',compact('ingresos','egre','mes','anual') );  
     }
 
     /**
@@ -36,7 +45,20 @@ class PdfIngresosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    $dia=Carbon::now()->format('d');
+        $me=Carbon::now()->format('m');
+        $anu=Carbon::now()->format('Y');
+ 
+        $inicio=$request->fecha1;
+        $fin= $request->fecha2;
+    
+        $suma=Ingreso::whereBetween('fecha', [$inicio, $fin])->sum('monto_total');
+
+        $ingresos=Ingreso::whereBetween('fecha', [$inicio, $fin])->get();
+        $listado=PDF::loadView('pdf.ingresospdf',compact('ingresos','dia','me','anu','inicio','fin','suma'));
+        return $listado->stream();
+            
+    
     }
 
     /**
@@ -46,8 +68,17 @@ class PdfIngresosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
+
     {
-        //
+         $dia=Carbon::now()->format('d');
+        $me=Carbon::now()->format('m');
+       $anu=Carbon::now()->format('Y');
+
+ 
+     $ingresos=Ingreso::find($id);
+      
+$listado=PDF::loadView('ingresos.imprimir',compact('ingresos','dia','me','anu'));
+ return $listado->stream();
     }
 
     /**

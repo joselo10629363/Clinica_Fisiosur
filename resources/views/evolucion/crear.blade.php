@@ -126,7 +126,7 @@
                 <form action="{{route('evolucion.destroy',$evolucion->id)}}" method="POST">
                   {{csrf_field()}}
                   <input type="hidden" name="_method"   value="DELETE">
-                  <button class="btn  pull-right btn-sm" ><i class="fa fa-trash" aria-hidden="true"></i></button>
+                  <button class="btn  pull-right btn-sm" onclick="return confirm('Avertencia  seguro que quieres  eliminar de forma indefinida ?')" ><i class="fa fa-trash" aria-hidden="true"></i></button>
                 </form>.
  
                   <a href="#" class="btn  pull-right"data-toggle="modal" data-target="#edit{{$evolucion->id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>

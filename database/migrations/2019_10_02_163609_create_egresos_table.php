@@ -19,7 +19,9 @@ class CreateEgresosTable extends Migration
             $table->bigInteger('usuario_id')->unsigned();
             $table->string('monto_total',10);
             $table->string('descripcion',255);
-            $table->timestamps();
+
+            $table->date('fecha');
+            $table->string('estado',10);
             $table->foreign('concepto_id')->references('id')->on('concepto')->onDelete('cascade')->onUpdate('cascade');
               $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade')->onUpdate('cascade');
              

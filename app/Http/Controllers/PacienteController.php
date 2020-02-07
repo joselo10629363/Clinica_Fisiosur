@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Paciente;
 use App\Persona;
 use App\Afiliacion;
+use Carbon\Carbon; 
 use App\Http\Requests\PacienteRequest;
 
 class PacienteController extends Controller
@@ -18,7 +19,7 @@ class PacienteController extends Controller
     public function index()
 
     {
-        $pacientes=Paciente::orderBy('id','DESC')->paginate(3);
+        $pacientes=Paciente::all();
       $afiliacion=Afiliacion::where("estado","=","activo")->get();
        return view('paciente.index', compact('afiliacion','pacientes')); 
     }
@@ -51,11 +52,12 @@ class PacienteController extends Controller
         $persona->domicilio= $request->domicilio;
         $persona->save();
 
-
+ $anu=Carbon::now()->format('Y-m-d');
         $paciente=new Paciente();
         $paciente->afiliacion_id=$request->afiliacion_id;
          $paciente->ocupacion=$request->ocupacion;
         $paciente->descripcion=$request->descripcion;
+        $paciente->fecha=$anu;
         $paciente->persona_id=persona::get()->max('id');
         $paciente->save();
         return back()->with('info','El registro del nuevo paciente fue exitoso');

@@ -36,10 +36,10 @@ $programaciones= programacion_tratamiento::where('estado','activo')->where('dia'
 $atender= programacion_tratamiento::where('estado','activo')->where('dia',$fecha)->orwhere('dia','todos')->count();
  
          $usuario=Auth::user();
-         
          $paciente=Paciente::count();
          $usuarios=Usuario::count();
             $medico=Medico::count();
+            $afi=Afiliacion::all();
         $afiliacion=Afiliacion::where("estado","=","activo")->count();
          $programacion=Programacion_tratamiento::where("estado","=","activo")->count();
          $ingresos=Ingreso::sum('monto_total') ;
@@ -49,7 +49,7 @@ $atender= programacion_tratamiento::where('estado','activo')->where('dia',$fecha
 
           if ($usuario->esAdmin()) {
       
-            return view('home', compact( 'paciente','tratamiento','afiliacion','programacion','medico','ingresos','egresos','usuarios','programaciones','atender','fecha' ));
+            return view('home', compact( 'paciente','tratamiento','afiliacion','programacion','medico','ingresos','egresos','usuarios','programaciones','atender','fecha','afi'));
 
 
           }else
@@ -92,7 +92,7 @@ $atender= programacion_tratamiento::where('estado','activo')->where('dia',$fecha
 if($usuario && Hash::check($request->password, $usuario->password )){
    Auth::loginUsingId($usuario->id, $lembrar); 
 }
-return redirect()->action('LoginController@form');
+return redirect()->action('LoginController@form')->with('info','Acceso denegado error en los credenciales');
 }
 
 //if($usuario && Hash::check($usuario->password, bcrypt($request->password) )){
